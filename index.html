@@ -559,6 +559,8 @@ a[data-passage]:hover {
 }());</tw-passagedata><tw-passagedata pid="5" name="Start" tags="" position="400,25" size="100,100">&lt;&lt;resetVars&gt;&gt;
 &lt;&lt;include &quot;HUD&quot;&gt;&gt;
 
+&lt;img src=&quot;img/cave.jpg&quot; alt=&quot;Eisriesenwelt cave entrance&quot; style=&quot;width:100%; max-width:500px; display:block; margin:1rem auto;&quot;&gt;
+
 &lt;span class=&quot;ptag&quot;&gt;Eisriesenwelt — Tennengebirge, Austria&lt;/span&gt;
 &lt;span class=&quot;zlabel&quot;&gt;Cultured Iceolation&lt;/span&gt;
 &lt;em&gt;Lead out into the deep.&lt;/em&gt;
@@ -818,7 +820,7 @@ Consider what the cave&#39;s substrate can actually provide.
 
 &lt;span class=&quot;ptag&quot;&gt;Zone 3 — The Deep Cave (~5 km)&lt;/span&gt;
 
-Good job!
+Good job on that question!
 
 &lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
 You are five kilometers in.
@@ -829,7 +831,7 @@ You sit in the absolute dark with your headlamp off and listen to the sound of y
 
 Days later, back in the laboratory, the culture plates answer you. &lt;em&gt;Something is alive here.&lt;/em&gt; Pale, translucent colonies, no wider than a pencil point, growing at a temperature that should make growth impossible. Weeks pass before they become visible.
 
-Your culture plates reveal &#39;&#39;strain AG-31T&#39;&#39;, also called &#39;&#39;aeniglutamicibacter psychrophenolicus&#39;&#39;, isolated from this cave wall, at this depth.
+Your culture plates reveal &#39;&#39;strain AG-31T&#39;&#39;, also called &#39;&#39;paeniglutamicibacter psychrophenolicus&#39;&#39;, isolated from this cave wall, at this depth.
 
 &lt;&lt;else&gt;&gt;
 &lt;div class=&quot;sparse mv&quot;&gt;
@@ -847,7 +849,7 @@ Your culture plates reveal &#39;&#39;strain AG-31T&#39;&#39;, also called &#39;&
 
 
 &lt;div class=&quot;cb&quot;&gt;
-&lt;&lt;link &quot;Read the field notes on AG-31T&quot;&gt;&gt;&lt;&lt;set $ag31t_read = true&gt;&gt;&lt;&lt;run Dialog.setup(&quot;Subtercola frigoramans \u2014 AG-31T&quot;, &quot;fieldnote-dialog&quot;); Dialog.wiki(Story.get(&quot;FieldNote-AG31T&quot;).text); Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;Read the field notes on AG-31T&quot;&gt;&gt;&lt;&lt;set $ag31t_read = true&gt;&gt;&lt;&lt;run Dialog.setup(&quot;Paeniglutamicibacter psychrophenolicus \u2014 AG-31T&quot;, &quot;fieldnote-dialog&quot;); Dialog.wiki(Story.get(&quot;FieldNote-AG31T&quot;).text); Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link [[Test your knowledge of AG-31T-&gt;Zone 3 - Quiz 1]]&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="Zone 3 - Quiz 1" tags="" position="150,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
 
@@ -856,7 +858,7 @@ Your culture plates reveal &#39;&#39;strain AG-31T&#39;&#39;, also called &#39;&
 &lt;div class=&quot;quiz-box&quot;&gt;
 &lt;span class=&quot;quiz-label&quot;&gt;Question 1 of 3&lt;/span&gt;
 
-&#39;&#39;Are aeniglutamicibacter psychrophenolicus AG-31T chemolithotrophs or chemoorganotrophs?&#39;&#39;
+&#39;&#39;Are AG-31T chemolithotrophs or chemoorganotrophs?&#39;&#39;
 &lt;/div&gt;
 
 &lt;div class=&quot;cb&quot;&gt;
@@ -879,7 +881,7 @@ AG-31T are &lt;strong&gt;chemoorganotrophs&lt;/strong&gt;, not chemolithotrophs.
 &lt;div class=&quot;quiz-box&quot;&gt;
 &lt;span class=&quot;quiz-label&quot;&gt;Question 2 of 3&lt;/span&gt;
 
-&#39;&#39;Are aeniglutamicibacter psychrophenolicus AG-31T aerobic?&#39;&#39;
+&#39;&#39;Are AG-31T aerobic?&#39;&#39;
 &lt;/div&gt;
 
 &lt;div class=&quot;cb&quot;&gt;
@@ -934,7 +936,7 @@ AG-31T is a &lt;strong&gt;psychrophile&lt;/strong&gt;, with optimal growth at 10
 
 &lt;span class=&quot;ptag&quot;&gt;Synthesis — The Shape of the Descent&lt;/span&gt;
 
-The Eisriesenwelt is a gradient: a structured removal of resources that selects, at each depth, for increasingly specialised metabolic strategies.
+The Eisriesenwelt is a gradient: a structured removal of resources that selects, at each depth, for increasingly specialized metabolic strategies.
 
 Light disappears first. Phototrophy becomes irrelevant.
 
@@ -957,7 +959,7 @@ Only the specialist survives the full descent. And the specialist is precisely t
 
 &lt;div class=&quot;cb&quot; style=&quot;margin-top:2rem;&quot;&gt;
 &lt;&lt;if $role is &quot;microbe&quot; and $metabolicStrategy is &quot;chemolith&quot;&gt;&gt;
-&lt;&lt;link [[Continue-&gt;Ending - Iron Oxidiser]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link [[Continue-&gt;Ending - Iron Oxidizer]]&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $role is &quot;microbe&quot;&gt;&gt;
 &lt;&lt;link [[Continue-&gt;Ending - Chemoorganotroph]]&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;
@@ -988,7 +990,7 @@ The record stands. The work continues.
 
 &lt;div class=&quot;cb&quot; style=&quot;margin-top:2.5rem;&quot;&gt;
 &lt;&lt;link [[↺ Begin again-&gt;Start]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="Ending - Iron Oxidiser" tags="" position="550,125" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="Ending - Iron Oxidizer" tags="" position="550,125" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
 &lt;&lt;set $zone = 5&gt;&gt;
 
 &lt;div class=&quot;e-title&quot;&gt;The Iron Oxidizer&lt;/div&gt;
@@ -1040,7 +1042,7 @@ You will continue.
 
 /* ══════════════════════════════════════════════
    FIELD NOTES (Dialog content — not rendered as game passages)
-══════════════════════════════════════════════ */</tw-passagedata><tw-passagedata pid="23" name="FieldNote-IceFormation" tags="fieldnote" position="675,475" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Eisriesenwelt &amp;nbsp;|&amp;nbsp; Tennengebirge, Austria&lt;/div&gt;
+══════════════════════════════════════════════ */</tw-passagedata><tw-passagedata pid="23" name="FieldNote-IceFormation" tags="fieldnote" position="475,450" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Eisriesenwelt &amp;nbsp;|&amp;nbsp; Tennengebirge, Austria&lt;/div&gt;
 
 &lt;h4&gt;How Cave Ice Forms&lt;/h4&gt;
 &lt;p&gt;The Eisriesenwelt contains over 30,000 m³ of permanent ice — the largest volume of any ice cave on Earth. Unlike glacial ice, which forms from compacted snow, cave ice forms when cold air sinks into the cave in winter (cold air is denser) and freezes meltwater percolating downward from the mountain above. The ice grows from the base upward in a process called &lt;em&gt;dynamic icing&lt;/em&gt;.&lt;/p&gt;
@@ -1052,24 +1054,24 @@ You will continue.
 &lt;h4&gt;Ice Loss and Climate&lt;/h4&gt;
 &lt;p&gt;Long-term monitoring of the Eisriesenwelt documents net ice loss consistent with regional warming in the Eastern Alps. As surface temperatures rise, winter cold periods shorten and summer melt periods lengthen — reducing the net ice budget. Increased meltwater influx carries dissolved organic carbon from alpine soils into the cave system, enriching zones that have been carbon-scarce for millennia and altering the competitive conditions that selected for slow, specialised organisms like those in the permanent dark.&lt;/p&gt;
 
-&lt;cite&gt;Obleitner F, Spötl C (2011). The mass and energy balance of ice within the Eisriesenwelt cave, Austrian Alps. &lt;em&gt;The Cryosphere&lt;/em&gt; 5:245–257.&lt;/cite&gt;</tw-passagedata><tw-passagedata pid="24" name="FieldNote-AG31T" tags="fieldnote" position="450,475" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Strain AG&amp;#8209;31T &amp;nbsp;|&amp;nbsp; Margesin et al., 2004&lt;/div&gt;
+&lt;cite&gt;Obleitner F, Spötl C (2011). The mass and energy balance of ice within the Eisriesenwelt cave, Austrian Alps. &lt;em&gt;The Cryosphere&lt;/em&gt; 5:245–257.&lt;/cite&gt;</tw-passagedata><tw-passagedata pid="24" name="FieldNote-AG31T" tags="fieldnote" position="600,450" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Strain AG&amp;#8209;31T &amp;nbsp;|&amp;nbsp; Margesin et al., 2004&lt;/div&gt;
 
 &lt;h4&gt;Isolation &amp;amp; Discovery&lt;/h4&gt;
-&lt;p&gt;AG-31T was isolated from surface-sterilised bulk soil in the Eisriesenwelt cave system by Rosa Margesin and colleagues at the University of Innsbruck. Recovered on R2A agar at 4°C and identified via 16S rRNA gene sequencing as a novel species within &lt;em&gt;Caulobacteraceae&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;TBD&lt;/p&gt;
 
 &lt;h4&gt;Classification&lt;/h4&gt;
-&lt;p&gt;AG-31T is a strictly &lt;strong&gt;aerobic chemoorganotroph&lt;/strong&gt; — it requires molecular oxygen as its terminal electron acceptor and derives energy from the oxidation of organic carbon compounds. It is classified as a &lt;strong&gt;psychrophile&lt;/strong&gt;, with optimal growth at 10–15°C and confirmed metabolic activity near 0°C. Its capacity for &lt;strong&gt;phenol degradation&lt;/strong&gt; at low temperatures (1–25°C) is among its most ecologically significant characteristics.&lt;/p&gt;
+&lt;p&gt;TBD&lt;/p&gt;
 
 &lt;h4&gt;Cold-Active Enzymes&lt;/h4&gt;
-&lt;p&gt;Psychrophilic enzymes maintain conformational flexibility at near-zero temperatures through altered structural features: fewer stabilising salt bridges, reduced proline residues in flexible loops, and modified hydrophobic core geometry. The result is catalytic efficiency near 0°C but thermal instability above ~35–40°C — a classic evolutionary trade-off between cold activity and thermostability.&lt;/p&gt;
+&lt;p&gt;TBD&lt;/p&gt;
 
 &lt;h4&gt;Membrane Adaptation&lt;/h4&gt;
-&lt;p&gt;At near-zero temperatures, cell membranes enter a gel phase that disrupts transport and function. AG-31T compensates by incorporating elevated proportions of unsaturated and polyunsaturated fatty acids — lipids with lower melting points that maintain membrane fluidity in the cold.&lt;/p&gt;
+&lt;p&gt;TBD&lt;/p&gt;
 
-&lt;h4&gt;Climate Vulnerability&lt;/h4&gt;
-&lt;p&gt;Increased alpine warming drives more meltwater into deep cave systems, introducing dissolved organic carbon that favours faster-growing, generalist surface-derived competitors. The cold, dark, carbon-scarce stable regime that selected for AG-31T&#39;s adaptations is precisely what climate change threatens. Extreme specialisation to stable conditions is an advantage exactly until those conditions change.&lt;/p&gt;
+&lt;h4&gt;Characteristics Overview&lt;/h4&gt;
+&lt;p&gt;Insert picture here.&lt;/p&gt;
 
-&lt;cite&gt;Margesin R, Spröer C, Schumann P, Schinner F (2004). &lt;em&gt;Int J Syst Evol Microbiol&lt;/em&gt; 53(5):1291–1296.&lt;/cite&gt;</tw-passagedata><tw-passagedata pid="25" name="FieldNote-Climate" tags="fieldnote" position="575,475" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Eisriesenwelt &amp;nbsp;|&amp;nbsp; Tennengebirge, Austria&lt;/div&gt;
+&lt;cite&gt;Margesin R, Spröer C, Schumann P, Schinner F (2004). &lt;em&gt;Int J Syst Evol Microbiol&lt;/em&gt; 53(5):1291–1296.&lt;/cite&gt;</tw-passagedata><tw-passagedata pid="25" name="FieldNote-Climate" tags="fieldnote" position="725,450" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Eisriesenwelt &amp;nbsp;|&amp;nbsp; Tennengebirge, Austria&lt;/div&gt;
 
 &lt;h4&gt;Ice Loss in the Eisriesenwelt&lt;/h4&gt;
 &lt;p&gt;Long-term monitoring has documented net ice loss over the past several decades, consistent with regional warming in the Eastern Alps. The ice formations regulate airflow, humidity, and temperature throughout the system — their retreat alters the microclimate at every depth.&lt;/p&gt;

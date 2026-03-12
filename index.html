@@ -383,10 +383,11 @@ a[data-passage]:hover {
 }
 
 @media (max-width:600px) {
-  .passage { padding:1.6rem 1.4rem; margin-top:110px; margin-left:1rem !important; margin-right:1rem !important; width:auto; }
+  .passage { padding:1.6rem 1.4rem; margin-top:110px; margin-left:1rem !important; margin-right:1rem !important; width:calc(100vw - 2rem); box-sizing:border-box; }
   .mg { grid-template-columns:1fr; }
   #hud-inner { padding:6px 1.2rem; gap:10px; font-size:10px; width:calc(100% - 2.4rem); }
   .passage img { max-width:100%; }
+  .cite-list li { word-break:break-word; overflow-wrap:break-word; }
 }
 
 

@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Cultured ICEolation" startnode="6" creator="Twine" creator-version="2.11.1" format="SugarCube" format-version="2.37.3" ifid="D7A3F091-4B2C-4E5D-9861-3CF027A18E44" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&family=Space+Mono&display=swap');
+	<tw-storydata name="Cultured ICEolation" startnode="5" creator="Twine" creator-version="2.11.1" format="SugarCube" format-version="2.37.3" ifid="D7A3F091-4B2C-4E5D-9861-3CF027A18E44" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&family=Space+Mono&display=swap');
 
 :root {
   --za: #72e5b5;
@@ -210,7 +210,6 @@ a[data-passage]:hover {
   transform:translateX(6px);
   box-shadow:-3px 0 0 var(--za); color:var(--za); text-shadow:0 0 10px var(--zg);
 }
-.cb a[data-passage]:not([data-passage]) { cursor:pointer; }
 
 .hint { font-size:0.8em; color:var(--mu); font-style:italic; }
 
@@ -278,6 +277,11 @@ a[data-passage]:hover {
   background:rgba(230,57,70,0.08); margin:1.5rem 0;
   font-style:italic; color:#f4a1a7;
 }
+.death-box {
+  border-left:3px solid #4a0a0a; padding:1rem 1.2rem;
+  background:rgba(80,10,10,0.18); margin:1.5rem 0;
+  color:#c97070; font-style:italic;
+}
 
 .mv {
   font-style:italic;
@@ -297,42 +301,15 @@ a[data-passage]:hover {
 .warn-label { font-family:var(--fm); font-size:0.76em; color:#f4a261; letter-spacing:0.08em; display:block; }
 .warn-sub   { font-size:0.82em; color:var(--mu); font-style:italic; margin-top:0.25rem; display:block; }
 
-#sb-bd {
-  position:fixed; inset:0; background:rgba(0,0,0,0.52);
-  z-index:200; opacity:0; pointer-events:none; transition:opacity 0.3s;
+.quiz-box {
+  padding:1.1rem 1.3rem;
+  background:rgba(76,201,240,0.05);
+  border:1px solid rgba(76,201,240,0.2);
+  border-radius:3px; margin:1.5rem 0 0.5rem;
 }
-#sb-bd.sb-bd-on { opacity:1; pointer-events:all; }
-
-.sidebar-panel {
-  position:fixed; top:0; right:0; width:min(490px,90vw); height:100%;
-  background:rgba(5,8,18,0.98);
-  border-left:1px solid rgba(255,255,255,0.08);
-  z-index:201; overflow-y:auto; padding:1.8rem 1.7rem;
-  transform:translateX(105%);
-  transition:transform 0.36s cubic-bezier(0.22,1,0.36,1);
-  box-shadow:-24px 0 70px rgba(0,0,0,0.65);
-}
-.sidebar-panel.sb-open { transform:translateX(0); }
-.sb-close {
-  position:absolute; top:1rem; right:1.2rem;
-  background:none; border:none; color:var(--mu);
-  font-size:1.4rem; cursor:pointer; line-height:1; padding:0;
-}
-.sb-close:hover { color:var(--za); }
-.sb-title { font-family:var(--fh); font-size:1em; letter-spacing:0.1em; color:var(--za); margin-bottom:0.3rem; text-shadow:0 0 10px var(--zg); }
-.sb-sub   { font-family:var(--fm); font-size:0.78em; color:var(--mu); margin-bottom:1.5rem; letter-spacing:0.05em; }
-.sidebar-panel h4 {
-  font-family:var(--fh); font-size:0.8em; letter-spacing:0.13em; text-transform:uppercase;
-  color:#8ecae6; margin:1.5rem 0 0.5rem;
-  border-bottom:1px solid rgba(142,202,230,0.15); padding-bottom:0.3rem;
-}
-.sidebar-panel p, .sidebar-panel li {
-  font-size:0.87em; line-height:1.72; color:#b8cfd8; margin-bottom:0.6rem;
-}
-.sidebar-panel ul { padding-left:1.3rem; }
-.sidebar-panel cite {
-  display:block; font-style:italic; font-size:0.78em; color:#4a6a7a;
-  margin-top:1.5rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.06);
+.quiz-label {
+  font-family:var(--fm); font-size:0.72em; letter-spacing:0.12em;
+  text-transform:uppercase; color:#4cc9f0; margin-bottom:0.5rem; display:block;
 }
 
 .e-title {
@@ -342,13 +319,6 @@ a[data-passage]:hover {
 }
 .e-div { text-align:center; color:var(--mu); letter-spacing:0.4em; margin:2rem 0; font-family:var(--fh); font-size:0.7em; }
 .theend { font-family:var(--fh); letter-spacing:0.25em; text-align:center; color:var(--mu); font-size:0.76em; margin-top:2.5rem; display:block; }
-
-@media (max-width:600px) {
-  .passage { padding:1.5rem 1.3rem; margin-top:110px; width:min(720px, calc(100vw - 2rem)); }
-  .mg { grid-template-columns:1fr; }
-  #hud { font-size:10px; }
-  #hud-inner { padding:6px 1rem; gap:10px; font-size:10px; width:calc(100% - 2rem); }
-}
 
 /* ── Field Note Dialog ────────────────────────────── */
 #ui-overlay { background:rgba(0,0,0,0.55) !important; }
@@ -373,9 +343,7 @@ a[data-passage]:hover {
   text-shadow:0 0 10px var(--zg) !important;
 }
 #ui-dialog.fieldnote-dialog #ui-dialog-close {
-  color:var(--mu) !important;
-  background:none !important;
-  border:none !important;
+  color:var(--mu) !important; background:none !important; border:none !important;
 }
 #ui-dialog.fieldnote-dialog #ui-dialog-close:hover { color:var(--za) !important; }
 #ui-dialog.fieldnote-dialog #ui-dialog-body {
@@ -402,91 +370,40 @@ a[data-passage]:hover {
   display:block; font-style:italic; font-size:0.78em; color:#4a6a7a;
   margin-top:1.5rem; padding-top:1rem;
   border-top:1px solid rgba(255,255,255,0.06);
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Ending - Duc in Altum" tags="" position="650,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
-&lt;&lt;set $zone = 5&gt;&gt;
+}
 
-&lt;div class=&quot;e-title&quot;&gt;Cultured ICEolation&lt;/div&gt;
+@media (max-width:600px) {
+  .passage { padding:1.5rem 1.3rem; margin-top:110px; width:min(720px, calc(100vw - 2rem)); }
+  .mg { grid-template-columns:1fr; }
+  #hud-inner { padding:6px 1rem; gap:10px; font-size:10px; width:calc(100% - 2rem); }
+}
 
-&lt;div class=&quot;mv&quot; style=&quot;margin-bottom:2rem;&quot;&gt;
-The phrase is from the Gospel of Luke. &lt;em&gt;Lead out into the deep.&lt;/em&gt; It was spoken to someone who had caught nothing all night — who was ready to give up — and told to try again, further out, in deeper water.
 
-You are not that story.
-
-But you are &lt;em&gt;a&lt;/em&gt; story about depth: about what it costs to go further than the light reaches, and what it means to find something living there anyway.
-&lt;/div&gt;
-
----
-
-&lt;div class=&quot;mv sparse&quot;&gt;
-&lt;p&gt;You are a single cell in a cave system that has been dark for longer than human language.&lt;/p&gt;
-&lt;p&gt;You metabolise at a rate that would register as stillness on any instrument not calibrated for geological patience.&lt;/p&gt;
-&lt;p&gt;You do not experience the cold as cold. Your membranes were selected for this temperature — not despite it, but through it. Your cold-active enzymes are not inferior versions of mesophilic enzymes. They are different solutions to the same problem, elegant in their own terms.&lt;/p&gt;
-&lt;p&gt;The scientists who will eventually culture your descendants will call you an extremophile. They mean: you live where they cannot. But from your perspective — if perspective scales to a prokaryote — you live where you evolved to live. The extreme is theirs, not yours.&lt;/p&gt;
-&lt;p&gt;The deep cave is not hostile. The deep cave is the environment that shaped you.&lt;/p&gt;
-&lt;p&gt;When the world above warms and the meltwater increases and the competitors arrive and the gradient that made you is slowly unmade — you will not experience it as catastrophe. You will simply find, one generation at a time, that the conditions have shifted.&lt;/p&gt;
-&lt;p&gt;But that is not yet.&lt;/p&gt;
-&lt;p&gt;This is now: 0°C, permanent dark, trace iron in thin films on ancient limestone, absolute stillness — and you, metabolising, slowly, in the deep.&lt;/p&gt;
-&lt;p&gt;You were always here.&lt;/p&gt;
-&lt;p&gt;You will continue.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;e-div&quot;&gt;&amp;#x2295;&lt;/div&gt;
-
-&lt;span class=&quot;theend&quot;&gt;— CULTURED ICEOLATION —&lt;/span&gt;
-
-&lt;div class=&quot;cb&quot; style=&quot;margin-top:2.5rem;&quot;&gt;
-&lt;&lt;link [[↺ Begin again-&gt;Start]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="Ending - The Patient Survivor" tags="" position="400,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
-&lt;&lt;set $zone = 5&gt;&gt;
-
-&lt;div class=&quot;e-title&quot;&gt;The Patient Survivor&lt;/div&gt;
-
-The culture plates grew slowly. Weeks passed before the colonies became visible — pale, translucent discs no wider than a pencil point, growing at a temperature that should have made growth impossible.
-
-*Subtercola frigoramans*, strain AG-31T. A psychrophilic bacterium with optimal growth between 10°C and 15°C, yet capable of sustained metabolic activity near 0°C through cold-active enzymes whose tertiary structures maintain conformational flexibility at temperatures that arrest most protein function. Described formally by Margesin and colleagues in 2004. Isolated here, from this wall, at this depth.
-
-Its existence is not accidental. It is the product of a precise evolutionary fit to a precise set of conditions — each adaptation a response to a specific scarcity, accumulated over timescales beyond easy comprehension. The early adaptation you modelled in this descent is precisely what distinguishes organisms that survive environmental gradients from those that are eliminated by them.
-
-&lt;div class=&quot;e-div&quot;&gt;∿  ∿  ∿&lt;/div&gt;
-
-The cave microbiome of systems like the Eisriesenwelt is among the least-studied ecosystems on Earth and among the most biologically significant. In an era of accelerating climate change and increased surface-to-subsurface hydrological connectivity, the stability these organisms depend on is not guaranteed.
-
-The science of psychrophilic extremophiles extends well beyond any single cave: astrobiology, pharmaceutical enzyme chemistry, and our understanding of the conditions under which life is possible.
-
-AG-31T survives. For now. Given the right conditions. The patient strategy — adaptation before necessity, preparation before crisis — is what carried it here.
-
-&lt;span class=&quot;theend&quot;&gt;— THE END —&lt;/span&gt;
-
-&lt;div class=&quot;cb&quot; style=&quot;margin-top:2.5rem;&quot;&gt;
-&lt;&lt;link [[↺ Begin again-&gt;Start]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="Ending - The Specialist&#39;s Gamble" tags="" position="525,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
-&lt;&lt;set $zone = 5&gt;&gt;
-
-&lt;div class=&quot;e-title&quot;&gt;The Specialist&#39;s Gamble&lt;/div&gt;
-
-AG-31T survives. The culture plates confirm it — slow colonies in the cold, metabolising at rates that would register as noise on most instruments.
-
-But the question the data forces is not whether it is alive now. It is the nature of the wager that extreme specialisation represents.
-
-To be adapted for conditions almost nothing else can tolerate is an extraordinary competitive advantage — *as long as those conditions remain stable*. In deep cave systems, stability has historically been measured in geological time. Thousands of years of constant temperature, constant darkness, constant mineral flux, constant absence of fast-growing competitors.
-
-&lt;&lt;if not $adaptedEarly&gt;&gt;
-The organisms that struggled most with transitions between metabolic regimes were those that delayed adaptation — that tried to build new machinery after the resources enabling easy construction had already disappeared. The analogy extends to evolutionary time: populations that adapted early to cold-dark-carbon-scarce conditions are better positioned for continued survival than those that adapted under duress.
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if not $ag31t_read&gt;&gt;
-What is known of AG-31T&#39;s specific adaptations — its cold-active enzymes, unsaturated membrane lipids, minimal growth substrate requirements — represents years of careful isolation and characterisation work. That knowledge is what makes conservation arguments possible. You cannot argue for the protection of what has not yet been described.
-&lt;&lt;/if&gt;&gt;
-
-&lt;div class=&quot;e-div&quot;&gt;∿  ∿  ∿&lt;/div&gt;
-
-AG-31T&#39;s advantage is its tolerance for conditions most organisms cannot survive. The question climate science now forces us to ask is: *what if those conditions are no longer what they were?*
-
-&lt;span class=&quot;theend&quot;&gt;— THE END —&lt;/span&gt;
-
-&lt;div class=&quot;cb&quot; style=&quot;margin-top:2.5rem;&quot;&gt;
-&lt;&lt;link [[↺ Begin again-&gt;Start]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="4" name="HUD" tags="" position="275,25" size="100,100">&lt;div id=&quot;hud&quot;&gt;
+/* ══════════════════════════════════════════════
+   PASSAGES
+══════════════════════════════════════════════ */</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="StoryInit" tags="" position="25,50" size="100,100">&lt;&lt;set $metabolicOptions = 3&gt;&gt;
+&lt;&lt;set $role = &quot;scientist&quot;&gt;&gt;
+&lt;&lt;set $metabolicStrategy = &quot;&quot;&gt;&gt;
+&lt;&lt;set $samplingMethod = &quot;&quot;&gt;&gt;
+&lt;&lt;set $ag31t_read = false&gt;&gt;
+&lt;&lt;set $depthMeters = 0&gt;&gt;
+&lt;&lt;set $zone = 0&gt;&gt;
+&lt;&lt;set $depth = &quot;Surface&quot;&gt;&gt;
+&lt;&lt;set $temperature = &quot;~8°C&quot;&gt;&gt;
+&lt;&lt;set $light = &quot;Full sunlight&quot;&gt;&gt;
+&lt;&lt;set $carbon = &quot;Abundant&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="ResetVars" tags="widget" position="0,0" size="100,100">&lt;&lt;widget &quot;resetVars&quot;&gt;&gt;
+&lt;&lt;set $metabolicOptions = 3&gt;&gt;
+&lt;&lt;set $role = &quot;scientist&quot;&gt;&gt;
+&lt;&lt;set $metabolicStrategy = &quot;&quot;&gt;&gt;
+&lt;&lt;set $samplingMethod = &quot;&quot;&gt;&gt;
+&lt;&lt;set $ag31t_read = false&gt;&gt;
+&lt;&lt;set $depthMeters = 0&gt;&gt;
+&lt;&lt;set $zone = 0&gt;&gt;
+&lt;&lt;set $depth = &quot;Surface&quot;&gt;&gt;
+&lt;&lt;set $temperature = &quot;~8°C&quot;&gt;&gt;
+&lt;&lt;set $light = &quot;Full sunlight&quot;&gt;&gt;
+&lt;&lt;set $carbon = &quot;Abundant&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="HUD" tags="" position="275,25" size="100,100">&lt;div id=&quot;hud&quot;&gt;
   &lt;div id=&quot;hud-inner&quot;&gt;
     &lt;div class=&quot;hf&quot;&gt;&lt;span class=&quot;hl&quot;&gt;Zone&lt;/span&gt;&lt;span class=&quot;hv&quot;&gt;&lt;&lt;print $depth&gt;&gt;&lt;/span&gt;&lt;/div&gt;
     &lt;div class=&quot;hf&quot;&gt;&lt;span class=&quot;hl&quot;&gt;Temp&lt;/span&gt;&lt;span class=&quot;hv&quot;&gt;&lt;&lt;print $temperature&gt;&gt;&lt;/span&gt;&lt;/div&gt;
@@ -498,48 +415,8 @@ AG-31T&#39;s advantage is its tolerance for conditions most organisms cannot sur
     &lt;/div&gt;
     &lt;div id=&quot;mc&quot;&gt;Energy strategies left: &lt;&lt;print $metabolicOptions&gt;&gt;&lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="ResetVars" tags="widget" position="0,0" size="100,100">&lt;&lt;widget &quot;resetVars&quot;&gt;&gt;
-&lt;&lt;set $metabolicOptions = 4&gt;&gt;
-&lt;&lt;set $role = &quot;scientist&quot;&gt;&gt;
-&lt;&lt;set $adaptedEarly = false&gt;&gt;
-&lt;&lt;set $choseIron = false&gt;&gt;
-&lt;&lt;set $ag31t_read = false&gt;&gt;
-&lt;&lt;set $depthMeters = 0&gt;&gt;
-&lt;&lt;set $zone = 0&gt;&gt;
-&lt;&lt;set $depth = &quot;Surface&quot;&gt;&gt;
-&lt;&lt;set $temperature = &quot;~8°C&quot;&gt;&gt;
-&lt;&lt;set $light = &quot;Full sunlight&quot;&gt;&gt;
-&lt;&lt;set $carbon = &quot;Abundant&quot;&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Start" tags="" position="400,25" size="100,100">&lt;&lt;resetVars&gt;&gt;
-&lt;&lt;include &quot;HUD&quot;&gt;&gt;
-
-&lt;span class=&quot;ptag&quot;&gt;Eisriesenwelt — Tennengebirge, Austria&lt;/span&gt;
-&lt;span class=&quot;zlabel&quot;&gt;Cultured ICEolation&lt;/span&gt;
-&lt;em&gt;Lead out into the deep.&lt;/em&gt;
-
-A narrative exploration of microbial survival at the edge of biological possibility — inside the largest ice cave on Earth.
-
----
-
-How would you like to experience the descent?
-
-&lt;div class=&quot;cb&quot;&gt;
-&lt;&lt;link [[As the Microbe-&gt;Zone 0 - Entrance]]&gt;&gt;&lt;&lt;set $role = &quot;microbe&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link [[As the Scientist-&gt;Zone 0 - Entrance]]&gt;&gt;&lt;&lt;set $role = &quot;scientist&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;
-
-&lt;span class=&quot;hint&quot;&gt;The microbe path is visceral; the scientist path is expository. Both cover the same science. The microbe framing unlocks a third ending.&lt;/span&gt;</tw-passagedata><tw-passagedata pid="7" name="StoryInit" tags="" position="25,25" size="100,100">&lt;&lt;set $metabolicOptions = 4&gt;&gt;
-&lt;&lt;set $role = &quot;scientist&quot;&gt;&gt;
-&lt;&lt;set $adaptedEarly = false&gt;&gt;
-&lt;&lt;set $choseIron = false&gt;&gt;
-&lt;&lt;set $ag31t_read = false&gt;&gt;
-&lt;&lt;set $depthMeters = 0&gt;&gt;
-&lt;&lt;set $zone = 0&gt;&gt;
-&lt;&lt;set $depth = &quot;Surface&quot;&gt;&gt;
-&lt;&lt;set $temperature = &quot;~8°C&quot;&gt;&gt;
-&lt;&lt;set $light = &quot;Full sunlight&quot;&gt;&gt;
-&lt;&lt;set $carbon = &quot;Abundant&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="StoryScript" tags="" position="150,25" size="100,100">/*
- * DUC IN ALTUM — Visual Engine + UI
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="4" name="StoryScript" tags="" position="150,25" size="100,100">/*
+ * CULTURED ICEOLATION — Visual Engine + UI
  * SugarCube 2.37.3
  */
 (function () {
@@ -649,82 +526,12 @@ How would you like to experience the descent?
     requestAnimationFrame(loop);
   }
 
-  window.openSidebar = function(id){
-    var el = document.getElementById(id);
-    if(el) el.classList.add(&#39;sb-open&#39;);
-    var bd = document.getElementById(&#39;sb-bd&#39;);
-    if(bd) bd.classList.add(&#39;sb-bd-on&#39;);
-  };
-
-  window.closeSidebar = function(){
-    document.querySelectorAll(&#39;.sidebar-panel&#39;).forEach(function(e){
-      e.classList.remove(&#39;sb-open&#39;);
-    });
-    var bd = document.getElementById(&#39;sb-bd&#39;);
-    if(bd) bd.classList.remove(&#39;sb-bd-on&#39;);
-  };
-
   $(document).one(&#39;:storyready&#39;, function(){
     initCvs();
-
     var vig = document.createElement(&#39;div&#39;);
     vig.id = &#39;vig&#39;;
     document.body.appendChild(vig);
-
-    var bd = document.createElement(&#39;div&#39;);
-    bd.id = &#39;sb-bd&#39;;
-    bd.onclick = closeSidebar;
-    document.body.appendChild(bd);
-
-    document.body.insertAdjacentHTML(&#39;beforeend&#39;, [
-      &#39;&lt;div id=&quot;sb-ag31t&quot; class=&quot;sidebar-panel&quot;&gt;&#39;,
-        &#39;&lt;button class=&quot;sb-close&quot; onclick=&quot;closeSidebar()&quot;&gt;&amp;#x2715;&lt;/button&gt;&#39;,
-        &#39;&lt;div class=&quot;sb-title&quot;&gt;Subtercola frigoramans&lt;/div&gt;&#39;,
-        &#39;&lt;div class=&quot;sb-sub&quot;&gt;Strain AG-31T &amp;nbsp;|&amp;nbsp; Margesin et al., 2004&lt;/div&gt;&#39;,
-        &#39;&lt;h4&gt;Isolation &amp;amp; Discovery&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;AG-31T was isolated from surface-sterilised bulk soil in the Eisriesenwelt cave system by Rosa Margesin and colleagues at the University of Innsbruck. Recovered on R2A agar at 4&amp;deg;C and identified via 16S rRNA gene sequencing as a novel species within &lt;em&gt;Caulobacteraceae&lt;/em&gt;, representing a previously undescribed lineage from this habitat.&lt;/p&gt;&#39;,
-        &#39;&lt;h4&gt;Psychrophily&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;AG-31T is classified as a &lt;strong&gt;psychrophile&lt;/strong&gt; &amp;mdash; an organism optimally active at low temperatures (10&amp;ndash;15&amp;deg;C), yet capable of sustained metabolic function near 0&amp;deg;C. Most mesophilic organisms fail here due to membrane rigidification and protein misfolding. AG-31T has evolved specific countermeasures for both problems.&lt;/p&gt;&#39;,
-        &#39;&lt;h4&gt;Cold-Active Enzymes&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;Psychrophilic enzymes maintain conformational flexibility at near-zero temperatures through altered structural features: fewer stabilising salt bridges, reduced proline residues in flexible loops, and modified hydrophobic core geometry. The result is catalytic efficiency near 0&amp;deg;C but thermal instability above ~35&amp;ndash;40&amp;deg;C &amp;mdash; a classic evolutionary trade-off between cold activity and thermostability.&lt;/p&gt;&#39;,
-        &#39;&lt;h4&gt;Membrane Adaptation&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;At near-zero temperatures, cell membranes enter a gel phase that disrupts transport and function. AG-31T compensates by incorporating elevated proportions of unsaturated and polyunsaturated fatty acids &amp;mdash; lipids with lower melting points that maintain membrane fluidity in the cold. This is a defining biochemical signature of psychrophilic bacteria.&lt;/p&gt;&#39;,
-        &#39;&lt;h4&gt;Energy &amp;amp; Carbon&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;In the Eisriesenwelt deep cave, organic carbon is extremely scarce. AG-31T grows on minimal substrates and likely depends on trace organics from meltwater percolation combined with chemolithotrophic electron donors from the mineral substrate. Its extremely slow growth rate reflects the reality of near-zero energy availability.&lt;/p&gt;&#39;,
-        &#39;&lt;h4&gt;Climate Vulnerability&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;Increased alpine warming drives more meltwater into deep cave systems, introducing dissolved organic carbon that favours faster-growing, generalist surface-derived competitors. The cold, dark, carbon-scarce stable regime that selected for AG-31T\&#39;s adaptations is precisely what climate change threatens. Extreme specialisation to stable conditions is an advantage exactly until those conditions change.&lt;/p&gt;&#39;,
-        &#39;&lt;cite&gt;Margesin R, Spr&amp;ouml;er C, Schumann P, Schinner F (2004). Psychrophilic microorganisms isolated from alpine glacier cryoconite. &lt;em&gt;Int J Syst Evol Microbiol&lt;/em&gt; 53(5):1291&amp;ndash;1296.&lt;/cite&gt;&#39;,
-      &#39;&lt;/div&gt;&#39;
-    ].join(&#39;&#39;));
-
-    document.body.insertAdjacentHTML(&#39;beforeend&#39;, [
-      &#39;&lt;div id=&quot;sb-climate&quot; class=&quot;sidebar-panel&quot;&gt;&#39;,
-        &#39;&lt;button class=&quot;sb-close&quot; onclick=&quot;closeSidebar()&quot;&gt;&amp;#x2715;&lt;/button&gt;&#39;,
-        &#39;&lt;div class=&quot;sb-title&quot;&gt;Field Note: Climate Change&lt;/div&gt;&#39;,
-        &#39;&lt;div class=&quot;sb-sub&quot;&gt;Eisriesenwelt &amp;nbsp;|&amp;nbsp; Tennengebirge, Austria&lt;/div&gt;&#39;,
-
-        &#39;&lt;h4&gt;Ice Loss in the Eisriesenwelt&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;The Eisriesenwelt contains over 30,000 m&amp;sup3; of permanent ice, making it the largest ice cave on Earth. The ice is dynamic: it grows in winter as cold air sinks into the cave and freezes incoming meltwater, and it retreats in summer. Long-term monitoring has documented net ice loss over the past several decades, consistent with regional warming trends in the Eastern Alps.&lt;/p&gt;&#39;,
-        &#39;&lt;p&gt;The ice inside the cave is not simply frozen groundwater — it is a structural component of the cave ecosystem. Ice formations regulate airflow, humidity, and temperature throughout the system. Their retreat alters the microclimate at every depth.&lt;/p&gt;&#39;,
-
-        &#39;&lt;h4&gt;Temperature Trends&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;Mean annual air temperature in the Austrian Alps has risen by approximately 2&amp;deg;C since the late nineteenth century, with the rate of increase accelerating after 1980. Cave interior temperatures in systems like the Eisriesenwelt are coupled to surface climate through seasonal airflow and meltwater hydrology. A warming surface eventually means a warming cave interior — though the deep zones respond on timescales of decades to centuries rather than years.&lt;/p&gt;&#39;,
-
-        &#39;&lt;h4&gt;Meltwater and Carbon Influx&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;As surface temperatures rise, the volume of meltwater percolating into the cave increases. This meltwater carries dissolved organic carbon leached from alpine soils — carbon compounds that are metabolically rich relative to the near-zero concentrations present under stable conditions. For organisms adapted to carbon scarcity, this influx does not represent more food. It represents a change in the competitive landscape.&lt;/p&gt;&#39;,
-        &#39;&lt;p&gt;Fast-growing heterotrophic bacteria from the surface can exploit elevated dissolved organic carbon far more efficiently than slow-growing psychrophilic specialists like AG-31T. The arrival of richer substrate favours organisms with higher metabolic rates — precisely the organisms that the deep cave&amp;rsquo;s historical scarcity kept out.&lt;/p&gt;&#39;,
-
-        &#39;&lt;h4&gt;Competitive Displacement&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;AG-31T does not face direct thermal stress from the observed warming — temperatures in the deep cave are buffered enough that 2&amp;deg;C of surface warming will not immediately raise conditions beyond its tolerance range. The threat is indirect: destabilisation of the competitive exclusion that its specialisation depended on.&lt;/p&gt;&#39;,
-        &#39;&lt;p&gt;In ecological terms, AG-31T&amp;rsquo;s niche is defined not just by what it can tolerate, but by what others cannot. Remove the conditions that exclude its competitors, and the niche shrinks.&lt;/p&gt;&#39;,
-
-        &#39;&lt;h4&gt;Research Gaps&lt;/h4&gt;&#39;,
-        &#39;&lt;p&gt;Long-term microbiological monitoring of the Eisriesenwelt&amp;rsquo;s microbial communities is limited. Most studies, including the original characterisation of AG-31T, represent single-timepoint snapshots rather than longitudinal tracking. Whether the microbial community composition at depth has already shifted in response to observed warming is not currently known. This is an active area of scientific concern in cave microbiology.&lt;/p&gt;&#39;,
-
-        &#39;&lt;cite&gt;Obleitner F, Spötl C (2011). The mass and energy balance of ice within the Eisriesenwelt cave, Austrian Alps. &lt;em&gt;The Cryosphere&lt;/em&gt; 5:245&amp;ndash;257.&lt;br&gt;&#39;,
-        &#39;Temovski M et al. (2018). Cave ice in the Alpine region. &lt;em&gt;Quaternary International&lt;/em&gt;.&lt;/cite&gt;&#39;,
-      &#39;&lt;/div&gt;&#39;
-    ].join(&#39;&#39;));
+  });
 
   $(document).on(&#39;:passageend&#39;, function(){
     var sv = State.variables;
@@ -749,37 +556,25 @@ How would you like to experience the descent?
     }
   });
 
-}());</tw-passagedata><tw-passagedata pid="9" name="Synthesis" tags="" position="275,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
-&lt;&lt;set $zone = 5&gt;&gt;
+}());</tw-passagedata><tw-passagedata pid="5" name="Start" tags="" position="400,25" size="100,100">&lt;&lt;resetVars&gt;&gt;
+&lt;&lt;include &quot;HUD&quot;&gt;&gt;
 
-&lt;span class=&quot;ptag&quot;&gt;Synthesis — The Shape of the Descent&lt;/span&gt;
+&lt;span class=&quot;ptag&quot;&gt;Eisriesenwelt — Tennengebirge, Austria&lt;/span&gt;
+&lt;span class=&quot;zlabel&quot;&gt;Cultured Iceolation&lt;/span&gt;
+&lt;em&gt;Lead out into the deep.&lt;/em&gt;
 
-The Eisriesenwelt is a gradient: a structured removal of resources that selects, at each depth, for increasingly specialised metabolic strategies.
+A narrative exploration of microbial survival at the edge of biological possibility, inside the largest ice cave on Earth.
 
-Light disappears first. Phototrophy becomes irrelevant.
 
-Organic carbon diminishes. Heterotrophic metabolism on dissolved compounds fails.
 
-Temperature stabilises near freezing. Most enzyme systems slow toward dysfunction.
+&#39;&#39;How would you like to play the game?&#39;&#39;
 
-At the terminus of this gradient, a single energy strategy remains: extract trace electrons from mineral surfaces, metabolise at a rate surface biology would mistake for stillness, endure cold with modified membranes and cold-active enzymes, and persist.
-
-Only the specialist survives the full descent. And the specialist is precisely the organism most threatened by destabilisation of the conditions that created it.
-
-&lt;div class=&quot;warn-box&quot;&gt;
-&lt;span class=&quot;warn-label&quot;&gt;ENERGY STRATEGIES REMAINING: &lt;&lt;print $metabolicOptions&gt;&gt;&lt;/span&gt;
-&lt;span class=&quot;warn-sub&quot;&gt;How long until: 0 ?&lt;/span&gt;
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link &quot;As the Microbe&quot; &quot;Zone 0 - Entrance&quot;&gt;&gt;&lt;&lt;set $role = &quot;microbe&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;As the Scientist&quot; &quot;Zone 0 - Entrance&quot;&gt;&gt;&lt;&lt;set $role = &quot;scientist&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;/div&gt;
 
----
-
-&lt;&lt;if $role is &quot;microbe&quot;&gt;&gt;
-&lt;&lt;link [[Duc in Altum-&gt;Ending - Duc in Altum]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $adaptedEarly and $ag31t_read&gt;&gt;
-&lt;&lt;link [[The Patient Survivor-&gt;Ending - The Patient Survivor]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;else&gt;&gt;
-&lt;&lt;link [[The Specialist&#39;s Gamble-&gt;Ending - The Specialist&#39;s Gamble]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="Zone 0 - Entrance" tags="" position="525,25" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+&lt;span class=&quot;hint&quot;&gt;The microbe path places you inside the organism; the scientist path is expository. Both cover the same science, and lead to different endings.&lt;/span&gt;</tw-passagedata><tw-passagedata pid="6" name="Zone 0 - Entrance" tags="" position="525,25" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
 &lt;&lt;set $zone = 0&gt;&gt;
 &lt;&lt;set $depthMeters = 0&gt;&gt;
 &lt;&lt;set $depth = &quot;Surface — Cave Entrance&quot;&gt;&gt;
@@ -790,27 +585,28 @@ Only the specialist survives the full descent. And the specialist is precisely t
 &lt;span class=&quot;ptag&quot;&gt;Zone 0 — The Entrance &lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;&lt;span class=&quot;rbadge rb-sci&quot;&gt;Scientist&lt;/span&gt;&lt;&lt;else&gt;&gt;&lt;span class=&quot;rbadge rb-mic&quot;&gt;Microbe&lt;/span&gt;&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
-You stand at the mouth of the Eisriesenwelt — the *World of the Ice Giants* — in the Tennengebirge massif, forty kilometres southwest of Salzburg. It is early morning in May. Cold, mineral-scented air rushes outward from the cave opening, carrying ice crystals that catch the first light in brief prismatic flashes. Behind you: pine forest, birdsong, the distant drone of a tourist van working up the switchbacks. Ahead: a limestone corridor that extends forty kilometres into the mountain.
+It is early in the morning. The Wiener Melange you had earlier has proven to be a vital resource. After the ascent, you now finally stand at the mouth of the Eisriesenwelt — &#39;&#39;the World of the Ice Giants&#39;&#39; — in the Tennengebirge massif, forty kilometers southwest of Salzburg. Cold, mineral-scented air rushes outward from the cave opening, scattering ice crystals that briefly catch the dawn&#39;s first rays. Behind you: pine forest, birdsong. Ahead: a limestone corridor that extends forty kilometers into the mountain.
 
-You are not here for the ice formations, though they are extraordinary — stalactites and columns and frozen waterfalls that expand and retreat with each seasonal cycle, dated in some cases to the Little Ice Age. You are here for something smaller. Something most visitors would not think to look for.
+Unlike tourists, you are not here for the ice formations, though they are extraordinary. You are for something smaller. Much smaller. Something most visitors would not think to look for.
 
-You check your field kit: sample vials, a calibrated temperature probe, a notebook dense with relevant literature. *You are looking for life in places life is not supposed to be.*
+You check your field kit: sample vials, a calibrated temperature probe, a notebook dense with relevant literature. &#39;&#39;You are looking for life in places life is not supposed to be.&#39;&#39;
 
 &lt;&lt;else&gt;&gt;
 &lt;div class=&quot;mv&quot;&gt;
-Light. Warmth. The molecular complexity of a surface world in full operation — oxygen, photosynthetic signatures drifting in convective currents, organic carbon arriving in dust and water and in the metabolic exhaust of things that move through this space without noticing you.
+Light. Warmth. The molecular complexity of a surface world in full operation: a swirl of oxygen, plants on the side, organic carbon arriving in dust and water, the breath of passing creatures. All of it moving through this space, none of it aware of you.
 
 You exist at the threshold. Behind you: abundance. Ahead: the gradient.
 
-Every microbe in your evolutionary lineage has performed this calculation — how far inward, how deep, and at what point does scarce competition fail to compensate for scarce resources?
+Every organism in your evolutionary lineage has performed this calculation: how far inward, how deep, and at what point does reduced competition fail to compensate for reduced resources?
 
 You carry this question in your membranes.
 &lt;/div&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link &quot;Field note: Ice formations in the Eisriesenwelt&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;Field Note: Ice Formations&quot;, &quot;fieldnote-dialog&quot;); Dialog.wiki(Story.get(&quot;FieldNote-IceFormation&quot;).text); Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link [[Proceed into the cave-&gt;Zone 1 - Twilight Zone]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="Zone 1 - Twilight Zone" tags="" position="650,25" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="Zone 1 - Twilight Zone" tags="" position="650,25" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
 &lt;&lt;set $zone = 1&gt;&gt;
 &lt;&lt;set $depthMeters = 400&gt;&gt;
 &lt;&lt;set $depth = &quot;Twilight Zone&quot;&gt;&gt;
@@ -821,200 +617,219 @@ You carry this question in your membranes.
 &lt;span class=&quot;ptag&quot;&gt;Zone 1 — The Twilight Zone (~400 m)&lt;/span&gt;
 
 &lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
-The light here is pale and scattered. It reaches you in fragments, broken by ice formations into diffuse shards that arrive without warmth. Photosynthetic biofilms still persist on sheltered surfaces — thin coatings of green and olive that testify to the persistence of phototrophic life even under constraint.
 
-But the light is unreliable. Cloud cover outside reduces it to almost nothing. A new ice formation creates shadow. The seasonal angle of the sun matters at this depth.
+The light here is pale and scattered. It reaches you in fragments, broken by ice formations into diffuse shards that arrive without warmth. Thin coatings of green testify to the persistence of photothophic life even under constraint. But further in, where even this light fails, those communities become sparses and eventually vanish entirely.
 
-The organisms that survive the full descent are not the ones that react to darkness when it arrives. They are the ones that begin preparing earlier — initiating chemolithotrophic metabolism while light still provides the energy to assemble the necessary machinery.
+The transition zone is where the selection gradient steepens. Organisms here are still receiving input from the surface world, such as light, moderate organic carbon, temperatures usually only a few degrees below the cave mouth. What survives the full descent is what begins committing to chemotrophic or chemoorganotrophic metabolisms before darkness arrives.
+
+Your instruments pick up diverse microbial signatures in the biofilms on the ice and the walls. The community is transitional: surface-adapted generalists mixed with organisms already running on chemotrophic pathways. You wonder: &lt;em&gt;which of these strategies will still work five kilometres deeper?&lt;/em&gt;
+
+
+&#39;&#39;How will you search for life in this transition zone?&#39;&#39;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link &quot;Surface swabs of the ice formations&quot; &quot;Zone 2 - Permanent Dark&quot;&gt;&gt;&lt;&lt;set $samplingMethod = &quot;swab&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;Core drilling into the frost-cemented sediment&quot; &quot;Zone 2 - Permanent Dark&quot;&gt;&gt;&lt;&lt;set $samplingMethod = &quot;drill&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;Water filtration from active drip-lines&quot; &quot;Zone 2 - Permanent Dark&quot;&gt;&gt;&lt;&lt;set $samplingMethod = &quot;filter&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;
 
 &lt;&lt;else&gt;&gt;
 &lt;div class=&quot;mv&quot;&gt;
 The light that reaches you here is pale. Scattered. It arrives between ice crystals, staying long enough only to suggest itself.
 
-You can still photosynthesize. But you find yourself calculating.
+You can still photosynthesize. But the calculation is changing.
 
-The organisms that make the full descent began preparing for darkness *before* they needed to — shifting metabolic pathways while energy was still available for the shift. The ones that waited until the light was entirely gone found themselves trying to build new machinery with no power supply.
+The organisms that survive the full descent are not the ones that react to darkness when it arrives. They are the ones that begin committing to alternative metabolisms while energy is still available for the transition.
 
 The decision is now. Not later.
 &lt;/div&gt;
-&lt;&lt;/if&gt;&gt;
 
----
 
-The light is faint but still present. How do you orient your metabolism?
+&#39;&#39;How do you orient your metabolism for the descent?&#39;&#39;
 
 &lt;div class=&quot;cb&quot;&gt;
-&lt;&lt;link [[Rely on photosynthesis — harvest what light remains-&gt;Zone 2 - Permanent Dark]]&gt;&gt;&lt;&lt;set $adaptedEarly = false&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link [[Begin shifting to chemolithotrophy — prepare while energy is available-&gt;Zone 2 - Permanent Dark]]&gt;&gt;&lt;&lt;set $adaptedEarly = true&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;Rely on photosynthesis — harvest what light remains&quot; &quot;Zone 2 - Permanent Dark&quot;&gt;&gt;&lt;&lt;set $metabolicStrategy = &quot;photo&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;Rely on chemoorganotrophy — oxidize available organic compounds&quot; &quot;Zone 2 - Permanent Dark&quot;&gt;&gt;&lt;&lt;set $metabolicStrategy = &quot;chemoorg&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;Rely on chemolithotrophy — oxidize inorganic mineral compounds&quot; &quot;Zone 2 - Permanent Dark&quot;&gt;&gt;&lt;&lt;set $metabolicStrategy = &quot;chemolith&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;/div&gt;
 
-&lt;span class=&quot;hint&quot;&gt;Both paths continue. The question is what you carry into the dark.&lt;/span&gt;</tw-passagedata><tw-passagedata pid="12" name="Zone 2 - Dead End - No Glucose" tags="" position="900,25" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
-&lt;&lt;set $zone = 2&gt;&gt;
-&lt;&lt;set $depthMeters = 2000&gt;&gt;
-
-&lt;span class=&quot;ptag&quot;&gt;Dead End — Organic Carbon&lt;/span&gt;
-
-&lt;div class=&quot;de-box&quot;&gt;
-&lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
-You search for complex organic molecules — glucose, acetate, any carbon-rich compounds that could fuel heterotrophic metabolism. Your sensors find traces: dissolved organic carbon in the meltwater at concentrations well below any metabolically useful threshold. The input to this system is limited to what percolates slowly through dozens of metres of overlying rock. It is not enough to live on.
-&lt;&lt;else&gt;&gt;
-&lt;div class=&quot;mv&quot;&gt;
-You reach for glucose. There is none. You wait. Nothing arrives. The dissolved organic carbon here is measured in micrograms per litre — a concentration that registers as absence.
-
-This is what scarcity feels like from the inside.
-&lt;/div&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;/div&gt;
-
-*The option closes.*
-
-&lt;div class=&quot;cb&quot;&gt;
-&lt;&lt;link [[← Return and choose differently-&gt;Zone 2 - Permanent Dark]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="Zone 2 - Dead End - No Light" tags="" position="1025,25" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
-&lt;&lt;set $zone = 2&gt;&gt;
-&lt;&lt;set $depthMeters = 2000&gt;&gt;
-
-&lt;span class=&quot;ptag&quot;&gt;Dead End — Photosynthesis&lt;/span&gt;
-
-&lt;div class=&quot;de-box&quot;&gt;
-&lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
-There is no sunlight here. There has been no sunlight at this depth for as long as these walls have existed in their current configuration. The phototrophic machinery that drives essentially all primary production on the surface is, in this context, metabolic dead weight. Communities this deep are not merely sunlight-deprived surface ecosystems — they are structurally different organisms running on different physics.
-&lt;&lt;else&gt;&gt;
-&lt;div class=&quot;mv&quot;&gt;
-You reach for the light.
-
-It is not there.
-
-You reach again.
-
-Nothing.
-
-Your chlorophyll complexes are intact — perfectly functional. They simply have no substrate. A perfect machine in a room with no fuel.
-&lt;/div&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;/div&gt;
-
-*The option closes.*
-
-&lt;div class=&quot;cb&quot;&gt;
-&lt;&lt;link [[← Return and choose differently-&gt;Zone 2 - Permanent Dark]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="Zone 2 - Iron Correct" tags="" position="1150,25" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
-&lt;&lt;set $zone = 2&gt;&gt;
-&lt;&lt;set $depthMeters = 2000&gt;&gt;
-&lt;&lt;set $choseIron = true&gt;&gt;
-
-&lt;span class=&quot;ptag&quot;&gt;Iron Oxidation — Viable&lt;/span&gt;
-
-&lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
-Iron oxidation. The ferrous iron in these cave walls — Fe²⁺ — can be oxidised to ferric iron — Fe³⁺ — releasing electrons that a properly equipped microorganism can use to drive ATP synthesis. The energy yield is modest: a fraction of what photosynthesis provides. But in an environment with no light and almost no organic carbon, *modest is everything*.
-
-Chemolithotrophic iron-oxidisers are the primary producers of the permanent dark zone — the ecological foundation of a community built on mineral chemistry, not sunlight.
-
-The cave walls here are stained ochre: oxidised iron precipitates. The visual signature of microbial activity over geological time. *Something is eating this rock. Very slowly. But something.*
-
-&lt;&lt;else&gt;&gt;
-&lt;div class=&quot;mv&quot;&gt;
-There. The electron gradient along the mineral surface.
-
-Fe²⁺ → Fe³⁺ + e⁻
-
-The electron enters your transport chain. Protons are pumped across your membrane. ATP is synthesised at a rate that would seem impossibly slow to any surface organism. But you are not a surface organism. You are not in a hurry.
-
-You are in a cave.
-
-The energy is real. It is enough.
-&lt;/div&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;div class=&quot;cb&quot;&gt;
-&lt;&lt;link [[Continue deeper-&gt;Zone 3 - Deep Cave]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="Zone 2 - Permanent Dark" tags="" position="775,25" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+&lt;span class=&quot;hint&quot;&gt;Each strategy has different consequences when going further into the cave.&lt;/span&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Zone 2 - Permanent Dark" tags="" position="775,25" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
 &lt;&lt;set $zone = 2&gt;&gt;
 &lt;&lt;set $depthMeters = 2000&gt;&gt;
 &lt;&lt;set $depth = &quot;Permanent Dark&quot;&gt;&gt;
 &lt;&lt;set $temperature = &quot;~2°C&quot;&gt;&gt;
 &lt;&lt;set $light = &quot;None&quot;&gt;&gt;
 &lt;&lt;set $carbon = &quot;Scarce&quot;&gt;&gt;
-&lt;&lt;set $metabolicOptions = 3&gt;&gt;
+&lt;&lt;set $metabolicOptions = 2&gt;&gt;
 
 &lt;span class=&quot;ptag&quot;&gt;Zone 2 — The Permanent Dark (~2 km)&lt;/span&gt;
 
 &lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
-The last visible light died somewhere behind you. You did not notice the exact moment — that is how darkness works in deep caves. It does not arrive. The light simply *stops being renewed*.
+The last visible light died somewhere behind you; you did not notice the exact moment. The temperature is near 2°C. Ancient compressed limestone surrounds you, threaded with mineral deposits. Your sensors register ferrous iron ( Fe²⁺ ) from the slow dissolution of geological material into the thin water films coating every surface. Dissolved organic carbon is quite scarce.
 
-The temperature is near 2°C. Ancient compressed limestone surrounds you, threaded with mineral deposits. Your sensors register ferrous iron — Fe²⁺ — from the slow dissolution of geological material into the thin water films coating every surface. Almost no organic carbon: the complex molecules of the surface world are essentially absent here.
+The community down here is not a diminished version of the twilight zone community. It is a fundamentally different one, built on non-phototrophic metabolisms.
 
-&lt;&lt;if $adaptedEarly&gt;&gt;
-The metabolic transition you initiated in the twilight zone is paying dividends. Your enzyme systems were primed for this. You arrived prepared rather than caught out.
+&lt;&lt;if $samplingMethod is &quot;swab&quot;&gt;&gt;
+Your ice-surface swabs from the twilight boundary captured a diverse community, but populations thin sharply with depth. Whatever metabolizes here does so in the thin water films between mineral grains, at concentrations that challenge even your most sensitive instruments.
+&lt;&lt;elseif $samplingMethod is &quot;drill&quot;&gt;&gt;
+Your sediment cores reveal sharp community transitions with depth. The frost-cemented layers hold a denser record: organisms that have been metabolizing here, extremely slowly, for potentially thousands of years.
 &lt;&lt;else&gt;&gt;
-Organisms dependent on light or preformed organics cannot persist here. The shift to chemolithotrophy must happen under energetic constraint. It is harder to rebuild an engine while running on fumes.
+Your drip-line filtration captured something telling: microbial load decreasing with depth, but metabolic diversity shifting rather than simply declining. Less phototrophy. More chemotrophy. A reorganization, not a loss.
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;else&gt;&gt;
-&lt;div class=&quot;mv&quot;&gt;
-Darkness. Complete and ancient darkness.
 
-Your photosynthetic machinery is now useless — not broken, simply *irrelevant*. Elegant molecular architecture with no substrate.
-
-The mineral substrate around you is not entirely dead. Iron-bearing compounds coat the walls. Electrons move through oxidation reactions measured in geological time. It is a thin energy source. But it is real.
-
-&lt;&lt;if $adaptedEarly&gt;&gt;
-You have already begun the shift. The chemolithotrophic pathways you prepared in the twilight zone are now your primary metabolism. You are slow. But you are *ready*.
-&lt;&lt;else&gt;&gt;
-You are building new metabolic machinery in the dark, with almost no energy to power the construction. This is what it costs to wait.
-&lt;&lt;/if&gt;&gt;
-&lt;/div&gt;
-&lt;&lt;/if&gt;&gt;
-
----
-
-&lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
-Each organism in this zone must extract energy from the environment using one of a small number of chemical strategies. The options available here depend entirely on what the cave provides. Below are the three candidates — only one of which is actually present in this environment.
-&lt;&lt;else&gt;&gt;
-&lt;div class=&quot;mv&quot;&gt;
-Your body knows three ways to make energy. Only one of them has a substrate here. The others are instincts reaching for things that no longer exist.
-&lt;/div&gt;
-&lt;&lt;/if&gt;&gt;
-
-**Which energy source is available in this environment?**
+&#39;&#39;What energy source is available to pure chemolithotrophs in this environment?&#39;&#39;
 
 &lt;div class=&quot;mg&quot;&gt;
-&lt;a data-passage=&quot;Zone 2 - Iron Correct&quot; class=&quot;mc-card c-iron&quot;&gt;
+&lt;a data-passage=&quot;Zone 3 - Deep Cave&quot; class=&quot;mc-card c-iron&quot;&gt;
   &lt;span class=&quot;fm2&quot;&gt;Fe²⁺ → Fe³⁺&lt;/span&gt;
   Iron Oxidation&lt;br&gt;
   &lt;span style=&quot;font-size:0.85em;color:#9d6aaa;&quot;&gt;Mineral electron donor&lt;/span&gt;
 &lt;/a&gt;
-&lt;a data-passage=&quot;Zone 2 - Dead End - No Glucose&quot; class=&quot;mc-card c-gluc&quot;&gt;
-  &lt;span class=&quot;fm2&quot;&gt;C₆H₁₂O₆&lt;/span&gt;
-  Organic Carbon&lt;br&gt;
-  &lt;span style=&quot;font-size:0.85em;color:#9a6a80;&quot;&gt;Search for glucose&lt;/span&gt;
+&lt;a data-passage=&quot;Zone 2 - Wrong Phenol&quot; class=&quot;mc-card c-gluc&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;C₆H₅OH&lt;/span&gt;
+  Phenol Degradation&lt;br&gt;
+  &lt;span style=&quot;font-size:0.85em;color:#9a6a80;&quot;&gt;Organic substrate&lt;/span&gt;
 &lt;/a&gt;
-&lt;a data-passage=&quot;Zone 2 - Dead End - No Light&quot; class=&quot;mc-card c-lght&quot;&gt;
+&lt;a data-passage=&quot;Zone 2 - Wrong Photo&quot; class=&quot;mc-card c-lght&quot;&gt;
   &lt;span class=&quot;fm2&quot;&gt;hν&lt;/span&gt;
   Photosynthesis&lt;br&gt;
-  &lt;span style=&quot;font-size:0.85em;color:#9a8a50;&quot;&gt;Reach for sunlight&lt;/span&gt;
+  &lt;span style=&quot;font-size:0.85em;color:#9a8a50;&quot;&gt;Solar energy&lt;/span&gt;
 &lt;/a&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Zone 3 - Deep Cave" tags="" position="25,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+&lt;/div&gt;
+
+&lt;&lt;elseif $metabolicStrategy is &quot;photo&quot;&gt;&gt;
+&lt;div class=&quot;death-box&quot;&gt;
+The light is gone. You did not prepare for this.
+
+Your photosynthetic machinery is intact, perfectly functional in fact, but there is no substrate. A perfect engine in a car with no fuel. The dissolved organic carbon in the meltwater is measured in micrograms per litre: not enough to fall back on now. Your enzyme systems slow, then stall, then cease.
+
+In the deep cave, the organisms that persist are those that committed to viable metabolic strategies before the gradient eliminated the alternatives. Your lineage ends here.
+&lt;/div&gt;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link [[← Return to the surface and begin again-&gt;Start]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;
+
+&lt;&lt;elseif $metabolicStrategy is &quot;chemolith&quot;&gt;&gt;
+&lt;div class=&quot;mv&quot;&gt;
+Darkness. Complete and utter darkness.
+
+Your photosynthetic pathways are now irrelevant. But you prepared for this. The chemolithotrophic machinery you committed to in the twilight zone is now your primary metabolism. It is extracting electrons from the mineral substrate, pumping protons across your membrane, synthesising ATP at a rate surface organisms would mistake for stillness.
+
+You are not a surface organism. You are not in a hurry.
+&lt;/div&gt;
+
+---
+
+&#39;&#39;What energy source is available and viable for a chemolithotroph (like you) in this environment?&#39;&#39;
+
+&lt;div class=&quot;mg&quot;&gt;
+&lt;a data-passage=&quot;Zone 3 - Deep Cave&quot; class=&quot;mc-card c-iron&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;Fe²⁺ → Fe³⁺&lt;/span&gt;
+  Iron Oxidation&lt;br&gt;
+  &lt;span style=&quot;font-size:0.85em;color:#9d6aaa;&quot;&gt;Mineral electron donor&lt;/span&gt;
+&lt;/a&gt;
+&lt;a data-passage=&quot;Zone 2 - Wrong Phenol&quot; class=&quot;mc-card c-gluc&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;C₆H₅OH&lt;/span&gt;
+  Phenol Degradation&lt;br&gt;
+  &lt;span style=&quot;font-size:0.85em;color:#9a6a80;&quot;&gt;Organic substrate&lt;/span&gt;
+&lt;/a&gt;
+&lt;a data-passage=&quot;Zone 2 - Wrong Photo&quot; class=&quot;mc-card c-lght&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;hν&lt;/span&gt;
+  Photosynthesis&lt;br&gt;
+  &lt;span style=&quot;font-size:0.85em;color:#9a8a50;&quot;&gt;Solar energy&lt;/span&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;&lt;else&gt;&gt;
+&lt;div class=&quot;mv&quot;&gt;
+Darkness. Complete and utter darkness.
+
+Your photosynthetic pathways are now irrelevant. The chemoorganotrophic machinery you committed to is running. But the question is &#39;&#39;which&#39;&#39; organic compound. The dissolved fraction of the cave meltwater carries the chemical signatures of what the surface world leaves behind, seeping slowly through meters of limestone. One organic substrate is present at concentrations. The others are traces too thin to sustain you.
+&lt;/div&gt;
+
+---
+
+&#39;&#39;What energy source is viable for a chemoorganotroph in this environment?&#39;&#39;
+
+&lt;div class=&quot;mg&quot;&gt;
+&lt;a data-passage=&quot;Zone 2 - Wrong Iron&quot; class=&quot;mc-card c-iron&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;Fe²⁺ → Fe³⁺&lt;/span&gt;
+  Iron Oxidation&lt;br&gt;
+  &lt;span style=&quot;font-size:0.85em;color:#9d6aaa;&quot;&gt;Mineral electron donor&lt;/span&gt;
+&lt;/a&gt;
+&lt;a data-passage=&quot;Zone 3 - Deep Cave&quot; class=&quot;mc-card c-gluc&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;C₆H₅OH&lt;/span&gt;
+  Phenol Degradation&lt;br&gt;
+  &lt;span style=&quot;font-size:0.85em;color:#9a6a80;&quot;&gt;Organic substrate&lt;/span&gt;
+&lt;/a&gt;
+&lt;a data-passage=&quot;Zone 2 - Wrong Photo&quot; class=&quot;mc-card c-lght&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;hν&lt;/span&gt;
+  Photosynthesis&lt;br&gt;
+  &lt;span style=&quot;font-size:0.85em;color:#9a8a50;&quot;&gt;Solar energy&lt;/span&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="Zone 2 - Wrong Iron" tags="" position="900,100" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Zone 2 — Not quite&lt;/span&gt;
+
+&lt;div class=&quot;de-box&quot;&gt;
+Iron oxidation (Fe²⁺ → Fe³⁺) is a &lt;em&gt;chemolithotrophic&lt;/em&gt; process, meaning that it uses an inorganic mineral compound as the electron donor. As a &lt;strong&gt;chemoorganotroph&lt;/strong&gt;, you derive energy from the oxidation of organic carbon compounds, not inorganic minerals. While ferrous iron is present in the cave walls, your metabolic machinery is not equipped to extract energy from it. Wrong hardware.
+
+Please try again.
+&lt;/div&gt;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link [[← Try again-&gt;Zone 2 - Permanent Dark]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="Zone 2 - Wrong Phenol" tags="" position="900,200" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Zone 2 — Not quite&lt;/span&gt;
+
+&lt;div class=&quot;de-box&quot;&gt;
+Phenol degradation is a &lt;em&gt;chemoorganotrophic&lt;/em&gt; process, meaning that it uses an organic compound (phenol, C₆H₅OH) as the electron donor. The question concerns what is available to &lt;strong&gt;chemolithotrophs&lt;/strong&gt;, which by definition extract energy from &lt;em&gt;inorganic&lt;/em&gt; substrates only.
+
+In this mineral-rich cave environment, what inorganic electron donor is present in the limestone walls? Please try again.
+&lt;/div&gt;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link [[← Try again-&gt;Zone 2 - Permanent Dark]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="Zone 2 - Wrong Photo" tags="" position="900,300" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Zone 2 — Not quite&lt;/span&gt;
+
+&lt;div class=&quot;de-box&quot;&gt;
+Beginner mistake. There is no sunlight at this depth. No photons reach the permanent dark zone. The cave has been completely light-free at this depth since the geological formation was sealed. Photosynthesis requires photons as the energy input; without them, the entire phototrophic pathway is non-functional regardless of how intact the molecular machinery is.
+
+Consider what the cave&#39;s substrate can actually provide.
+&lt;/div&gt;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link [[← Try again-&gt;Zone 2 - Permanent Dark]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="Zone 3 - Deep Cave" tags="" position="25,175" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
 &lt;&lt;set $zone = 3&gt;&gt;
 &lt;&lt;set $depthMeters = 5000&gt;&gt;
 &lt;&lt;set $depth = &quot;Deep Cave — AG-31T Habitat&quot;&gt;&gt;
-&lt;&lt;set $temperature = &quot;~0°C&quot;&gt;&gt;
+&lt;&lt;set $temperature = &quot;~1°C&quot;&gt;&gt;
 &lt;&lt;set $light = &quot;None&quot;&gt;&gt;
 &lt;&lt;set $carbon = &quot;Trace only&quot;&gt;&gt;
 &lt;&lt;set $metabolicOptions = 1&gt;&gt;
 
 &lt;span class=&quot;ptag&quot;&gt;Zone 3 — The Deep Cave (~5 km)&lt;/span&gt;
 
+Good job!
+
 &lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
-You are five kilometres in.
+You are five kilometers in.
 
-The temperature is 0°C. It has not varied in the hours you have been here. It has not varied, as far as the geological record suggests, in decades.
-
-No organic carbon of significance. No measurable iron flux. No light.
+The temperature is 1°C. It has not varied in the hours you have been here. According to the geological record, it has not varied significantly in decades, possibly longer. No measurable iron flux. No light.
 
 You sit in the absolute dark with your headlamp off and listen to the sound of your own breathing. The silence is geological in quality: not the absence of sound, but the presence of a vast and patient stillness.
 
-Days later, back in the laboratory, the culture plates answer you. *Something is alive here.*
+Days later, back in the laboratory, the culture plates answer you. &lt;em&gt;Something is alive here.&lt;/em&gt; Pale, translucent colonies, no wider than a pencil point, growing at a temperature that should make growth impossible. Weeks pass before they become visible.
+
+Your culture plates reveal &#39;&#39;strain AG-31T&#39;&#39;, also called &#39;&#39;aeniglutamicibacter psychrophenolicus&#39;&#39;, isolated from this cave wall, at this depth.
 
 &lt;&lt;else&gt;&gt;
 &lt;div class=&quot;sparse mv&quot;&gt;
@@ -1024,96 +839,252 @@ Days later, back in the laboratory, the culture plates answer you. *Something is
 &lt;p&gt;You are not dead.&lt;/p&gt;
 &lt;p&gt;But you are using almost nothing to remain this way.&lt;/p&gt;
 &lt;p&gt;This is the edge.&lt;/p&gt;
-&lt;p&gt;Generations of you, in this dark, at this temperature, extracting the minimum from the minimum.&lt;/p&gt;
+&lt;p&gt;Extracting the minimum from the minimum.&lt;/p&gt;
+&lt;p&gt;Your microbial companions have a name: &#39;&#39;aeniglutamicibacter psychrophenolicus&#39;&#39;, also called &#39;&#39;strain AG-31T&#39;&#39;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;&lt;/if&gt;&gt;
+
+
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link &quot;Read the field notes on AG-31T&quot;&gt;&gt;&lt;&lt;set $ag31t_read = true&gt;&gt;&lt;&lt;run Dialog.setup(&quot;Subtercola frigoramans \u2014 AG-31T&quot;, &quot;fieldnote-dialog&quot;); Dialog.wiki(Story.get(&quot;FieldNote-AG31T&quot;).text); Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link [[Test your knowledge of AG-31T-&gt;Zone 3 - Quiz 1]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="Zone 3 - Quiz 1" tags="" position="150,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Zone 3 — Field Quiz  (1 / 3)&lt;/span&gt;
+
+&lt;div class=&quot;quiz-box&quot;&gt;
+&lt;span class=&quot;quiz-label&quot;&gt;Question 1 of 3&lt;/span&gt;
+
+&#39;&#39;Are aeniglutamicibacter psychrophenolicus AG-31T chemolithotrophs or chemoorganotrophs?&#39;&#39;
+&lt;/div&gt;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link [[Chemolithotrophs — they oxidize inorganic minerals for energy-&gt;Zone 3 - Quiz 1 Wrong]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link [[Chemoorganotrophs — they oxidize organic compounds for energy-&gt;Zone 3 - Quiz 2]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="Zone 3 - Quiz 1 Wrong" tags="" position="300,200" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Zone 3 — Not quite&lt;/span&gt;
+
+&lt;div class=&quot;de-box&quot;&gt;
+AG-31T are &lt;strong&gt;chemoorganotrophs&lt;/strong&gt;, not chemolithotrophs. Despite the cave&#39;s mineral-rich environment, this microbe derives energy from phenol degradation, which is quite unique. Iron oxidation describes a different functional group of cave organisms.
+&lt;/div&gt;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link [[← Try again-&gt;Zone 3 - Quiz 1]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="Zone 3 - Quiz 2" tags="" position="150,275" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Zone 3 — Field Quiz  (2 / 3)&lt;/span&gt;
+
+&lt;div class=&quot;quiz-box&quot;&gt;
+&lt;span class=&quot;quiz-label&quot;&gt;Question 2 of 3&lt;/span&gt;
+
+&#39;&#39;Are aeniglutamicibacter psychrophenolicus AG-31T aerobic?&#39;&#39;
+&lt;/div&gt;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link [[Yes — they require molecular oxygen as their terminal electron acceptor-&gt;Zone 3 - Quiz 3]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link [[No — they are anaerobic-&gt;Zone 3 - Quiz 2 Wrong]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Zone 3 - Quiz 2 Wrong" tags="" position="300,325" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Zone 3 — Not quite&lt;/span&gt;
+
+&lt;div class=&quot;de-box&quot;&gt;
+AG-31T are &lt;strong&gt;strictly aerobic&lt;/strong&gt; organisms. They use molecular oxygen (O₂) as the terminal electron acceptor in their respiratory chain. Despite the cave&#39;s isolation, sufficient dissolved oxygen persists in the thin water films coating cave surfaces, percolating slowly from the surface, to support aerobic respiration at the extremely low metabolic rates these organisms maintain.
+&lt;/div&gt;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link [[← Try again-&gt;Zone 3 - Quiz 2]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="Zone 3 - Quiz 3" tags="" position="125,450" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Zone 3 — Field Quiz  (3 / 3)&lt;/span&gt;
+
+&lt;div class=&quot;quiz-box&quot;&gt;
+&lt;span class=&quot;quiz-label&quot;&gt;Question 3 of 3&lt;/span&gt;
+
+&#39;&#39;What is the temperature range for AG-31T&#39;s optimal phenol degradation?&#39;&#39;
+&lt;/div&gt;
+
+&lt;div class=&quot;mg&quot;&gt;
+&lt;a data-passage=&quot;Zone 3 - Quiz 3 Wrong&quot; class=&quot;mc-card c-iron&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;45°C – 60°C&lt;/span&gt;
+  Thermophilic
+&lt;/a&gt;
+&lt;a data-passage=&quot;Synthesis&quot; class=&quot;mc-card c-gluc&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;1°C – 25°C&lt;/span&gt;
+  Psychrophilic /&lt;br&gt;Psychrotolerant
+&lt;/a&gt;
+&lt;a data-passage=&quot;Zone 3 - Quiz 3 Wrong&quot; class=&quot;mc-card c-lght&quot;&gt;
+  &lt;span class=&quot;fm2&quot;&gt;30°C – 40°C&lt;/span&gt;
+  Mesophilic
+&lt;/a&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="Zone 3 - Quiz 3 Wrong" tags="" position="300,450" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Zone 3 — Not quite&lt;/span&gt;
+
+&lt;div class=&quot;de-box&quot;&gt;
+AG-31T is a &lt;strong&gt;psychrophile&lt;/strong&gt;, with optimal growth at 10–15°C and confirmed metabolic activity as low as 1°C. Its phenol degradation capacity operates across a psychrophilic range of roughly 1°C–25°C. Its cold-active enzymes are structurally configured for conformational flexibility at these low temperatures. A thermophilic or mesophilic range would be inconsistent with isolation from a near-zero-degree cave environment.
+&lt;/div&gt;
+
+&lt;div class=&quot;cb&quot;&gt;
+&lt;&lt;link [[← Try again-&gt;Zone 3 - Quiz 3]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="19" name="Synthesis" tags="" position="575,300" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+&lt;&lt;set $zone = 5&gt;&gt;
+&lt;&lt;set $depthMeters = 6000&gt;&gt;
+
+&lt;span class=&quot;ptag&quot;&gt;Synthesis — The Shape of the Descent&lt;/span&gt;
+
+The Eisriesenwelt is a gradient: a structured removal of resources that selects, at each depth, for increasingly specialised metabolic strategies.
+
+Light disappears first. Phototrophy becomes irrelevant.
+
+Organic carbon diminishes. Most heterotrophic metabolism fails — &lt;em&gt;unless&lt;/em&gt; the organism specializes in the specific trace organic substrates that persist: phenolic compounds, aromatic carbon seeping slowly through limestone from the soil above.
+
+Temperature stabilizes near freezing. Most enzyme systems slow toward dysfunction — &lt;em&gt;unless&lt;/em&gt; the organism has evolved cold-active enzymes and unsaturated lipid membranes specifically configured for this temperature range.
+
+At the terminus of this gradient, two viable energy strategies remain: iron oxidation for chemolithotrophs, extracting electrons from mineral surfaces, and phenol degradation for chemoorganotrophs like AG-31T, oxidizing trace organic substrates at rates surface biology would mistake for stillness.
+
+Only the specialist survives the full descent. And the specialist is precisely the organism most threatened by destabilization of the conditions that created it.
+
+&lt;div class=&quot;warn-box&quot;&gt;
+&lt;span class=&quot;warn-label&quot;&gt;ENERGY STRATEGIES REMAINING: &lt;&lt;print $metabolicOptions&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;warn-sub&quot;&gt;The gradient has done its work.&lt;/span&gt;
+&lt;/div&gt;
 
 ---
 
-Your culture plates reveal strain **AG-31T** — isolated from this cave wall, at this depth.
+&lt;&lt;link &quot;Field note: Climate change and the Eisriesenwelt&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;Field Note: Climate Change&quot;, &quot;fieldnote-dialog&quot;); Dialog.wiki(Story.get(&quot;FieldNote-Climate&quot;).text); Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;
 
-&lt;div class=&quot;cb&quot;&gt;
-&lt;&lt;link &quot;Read the field notes on AG-31T&quot;&gt;&gt;&lt;&lt;set $ag31t_read = true&gt;&gt;&lt;&lt;run Dialog.setup(&quot;Subtercola frigoramans — AG-31T&quot;, &quot;fieldnote-dialog&quot;); Dialog.wiki(Story.get(&quot;FieldNote-AG31T&quot;).text); Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link [[Continue to Zone 4-&gt;Zone 4 - Warming World]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="Zone 4 - Warming World" tags="" position="150,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
-&lt;&lt;set $zone = 4&gt;&gt;
-&lt;&lt;set $depthMeters = 6000&gt;&gt;
-&lt;&lt;set $depth = &quot;Cave Entrance — Present Day&quot;&gt;&gt;
-&lt;&lt;set $temperature = &quot;~10°C (above historical avg.)&quot;&gt;&gt;
-&lt;&lt;set $light = &quot;Full sunlight&quot;&gt;&gt;
-&lt;&lt;set $carbon = &quot;Increasing (meltwater influx)&quot;&gt;&gt;
-
-&lt;span class=&quot;ptag&quot;&gt;Zone 4 — Back at the Surface&lt;/span&gt;
-
-You are back where you started — standing at the mouth of the Eisriesenwelt, the same cave entrance from Zone 0. The same limestone, the same forest behind you, the same corridor descending into the mountain ahead.
-
-But this time you are not looking inward. You are looking at what is changing around the entrance, and thinking about what that means for everything five kilometres below.
-
-&lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
-The ice formations at the cave mouth are visibly thinner than they were in historical photographs from the early twentieth century. Monitoring data from the Tennengebirge documents progressive loss of permanent ice across the system — a direct response to rising regional temperatures. Mean annual air temperature in the Austrian Alps has increased by approximately 2°C over the past century, with the rate of change accelerating since the 1980s.
-
-The cave&#39;s interior microclimate, which has been remarkably stable for millennia, is coupled to the surface through meltwater hydrology. As surface temperatures rise, more snow and ice melts. That meltwater percolates downward, carrying dissolved organic carbon from the soil and surface into the cave system — including into the deep zones where AG-31T lives.
-
-This is the problem. More dissolved organic carbon sounds like more food. But it isn&#39;t — not for AG-31T. It is more food for fast-growing, metabolically flexible organisms from the surface: bacteria adapted to warm temperatures and rich carbon supplies. The mesophiles. The generalists. The organisms that AG-31T has been protected from for thousands of years precisely because the deep cave was too cold, too dark, and too carbon-poor for them to compete.
-
-AG-31T&#39;s competitive advantage is its tolerance for conditions almost nothing else can survive. Warming does not kill AG-31T directly. It kills AG-31T by making its habitat survivable for competitors.
-
+&lt;div class=&quot;cb&quot; style=&quot;margin-top:2rem;&quot;&gt;
+&lt;&lt;if $role is &quot;microbe&quot; and $metabolicStrategy is &quot;chemolith&quot;&gt;&gt;
+&lt;&lt;link [[Continue-&gt;Ending - Iron Oxidiser]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $role is &quot;microbe&quot;&gt;&gt;
+&lt;&lt;link [[Continue-&gt;Ending - Chemoorganotroph]]&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;
-&lt;div class=&quot;mv&quot;&gt;
-You are at the entrance. The same place you began. But the conditions outside have changed since the last time life like yours first moved inward.
-
-The ice is retreating. You can feel it in the meltwater — more of it than before, carrying the chemical signatures of a warmer surface world. Dissolved organics. The metabolic by-products of organisms that live in soil and sunlight.
-
-They are not here yet. Not at your depth. But their chemistry is arriving ahead of them, seeping into the dark through the same water that feeds you.
-
-The gradient that made you — the one that eliminated everything unable to live on almost nothing — is becoming less steep. And a less steep gradient means less protection.
-
-The deep cave was yours because it was impossible for others. That is starting to change.
-&lt;/div&gt;
+&lt;&lt;link [[Continue-&gt;Ending - Scientist]]&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="20" name="Ending - Scientist" tags="" position="450,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+&lt;&lt;set $zone = 5&gt;&gt;
 
-&lt;div class=&quot;cb&quot;&gt;
-&lt;&lt;link &quot;Field note: Climate change in the Eisriesenwelt&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;Field Note: Climate Change&quot;, &quot;fieldnote-dialog&quot;); Dialog.wiki(Story.get(&quot;FieldNote-Climate&quot;).text); Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link [[Continue to Synthesis-&gt;Synthesis]]&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="FieldNote-AG31T" tags="fieldnote" position="400,300" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Strain AG&amp;#8209;31T &amp;nbsp;|&amp;nbsp; Margesin et al., 2004&lt;/div&gt;
+&lt;div class=&quot;e-title&quot;&gt;The Record&lt;/div&gt;
+
+&lt;div class=&quot;mv&quot; style=&quot;margin-bottom:2rem;&quot;&gt;
+The data is collected. The plates have grown. The sequencing is complete.
+&lt;/div&gt;
+
+Aeniglutamicibacter psychrophenolicus, strain AG-31T. A strictly aerobic, psychrophilic chemoorganotroph with optimal growth between 10°C and 15°C, capable of sustained metabolic activity near 0°C. Phenol degradation confirmed across a temperature range of 1–25°C, a rare trait. Isolated from the Eisriesenwelt cave system.
+
+Its existence documents something easy to overlook: adaptation is not merely tolerance. AG-31T does not &lt;em&gt;survive&lt;/em&gt; at 1°C. It &lt;em&gt;functions&lt;/em&gt; at 1°C; it degrades phenol, reproduces, maintains membrane fluidity through unsaturated lipid composition, sustains catalytic rates through the structural flexibility of cold-active enzymes. These are not compromises. They are precise solutions to precise problems, accumulated across timescales that dwarf the history of scientific observation.
+
+&lt;div class=&quot;e-div&quot;&gt;∿  ∿  ∿&lt;/div&gt;
+
+The cave microbiome of systems like the Eisriesenwelt is among the least-studied ecosystems on Earth and among the most biologically significant. In an era of accelerating climate change, which means more meltwater, more dissolved organic carbon, more competition from surface-adapted generalists, the stability these organisms depend on is not guaranteed.
+
+What the science of AG-31T offers is a model for the logic of extreme specialization: the conditions under which it is an advantage, and the conditions under which it becomes a liability.
+
+The record stands. The work continues.
+
+&lt;span class=&quot;theend&quot;&gt;— THE END —&lt;/span&gt;
+
+&lt;div class=&quot;cb&quot; style=&quot;margin-top:2.5rem;&quot;&gt;
+&lt;&lt;link [[↺ Begin again-&gt;Start]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="Ending - Iron Oxidiser" tags="" position="550,125" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+&lt;&lt;set $zone = 5&gt;&gt;
+
+&lt;div class=&quot;e-title&quot;&gt;The Iron Oxidizer&lt;/div&gt;
+
+&lt;div class=&quot;sparse mv&quot; style=&quot;margin-bottom:2rem;&quot;&gt;
+&lt;p&gt;You are not the organism they will name.&lt;/p&gt;
+&lt;p&gt;You are something else. Something adjacent.&lt;/p&gt;
+&lt;/div&gt;
+
+The scientists who eventually culture from these walls will find aeniglutamicibacter psychrophenolicus — a chemoorganotroph, a phenol degrader, a specialist in organic substrates. That is not you. You oxidize iron. You strip electrons from Fe²⁺, push protons across your membrane, synthesise ATP from the mineral chemistry of ancient limestone. The stains on the cave walls, precipitated Fe³⁺, those are yours.
+
+You are a primary producer of the permanent dark: the ecological foundation on which other metabolic strategies are built. The carbon fixed slowly by chemolithotrophs becomes, eventually, the organic substrate that chemoorganotrophs like AG-31T rely on.
+
+&lt;div class=&quot;e-div&quot;&gt;∿  ∿  ∿&lt;/div&gt;
+
+You were not the answer to the scientists&#39; specific question. But you were part of the system that made the answer possible.
+
+&lt;span class=&quot;theend&quot;&gt;— THE END —&lt;/span&gt;
+
+&lt;div class=&quot;cb&quot; style=&quot;margin-top:2.5rem;&quot;&gt;
+&lt;&lt;link [[↺ Begin again-&gt;Start]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="22" name="Ending - Chemoorganotroph" tags="" position="700,150" size="100,100">&lt;&lt;include &quot;HUD&quot;&gt;&gt;
+&lt;&lt;set $zone = 5&gt;&gt;
+
+&lt;div class=&quot;e-title&quot;&gt;AG-31T&lt;/div&gt;
+
+&lt;div class=&quot;sparse mv&quot; style=&quot;margin-bottom:2rem;&quot;&gt;
+&lt;p&gt;You are the organism they will find.&lt;/p&gt;
+&lt;p&gt;Slow colonies on cold agar.&lt;/p&gt;
+&lt;p&gt;Patient. Specific. Exact.&lt;/p&gt;
+&lt;/div&gt;
+
+The culture plates that will bear your descendants&#39; colonies will grow for weeks before anyone notices them: pale, translucent discs at 4°C on R2A agar, expanding at a rate so slow that the researchers will almost give up. They will not give up. And what they will describe is this: a strictly aerobic chemoorganotroph, psychrophilic, with a remarkable capacity for phenol degradation at temperatures that arrest nearly every other known metabolic system.
+
+&lt;div class=&quot;e-div&quot;&gt;∿  ∿  ∿&lt;/div&gt;
+
+The scientists who find you will call you an extremophile. They mean: you live where they cannot. But from the vantage of your biochemistry, you live precisely where you evolved to live. The extreme is theirs.
+
+You were always here.
+
+You will continue.
+
+&lt;span class=&quot;theend&quot;&gt;— THE END —&lt;/span&gt;
+
+&lt;div class=&quot;cb&quot; style=&quot;margin-top:2.5rem;&quot;&gt;
+&lt;&lt;link [[↺ Begin again-&gt;Start]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;
+
+
+/* ══════════════════════════════════════════════
+   FIELD NOTES (Dialog content — not rendered as game passages)
+══════════════════════════════════════════════ */</tw-passagedata><tw-passagedata pid="23" name="FieldNote-IceFormation" tags="fieldnote" position="675,475" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Eisriesenwelt &amp;nbsp;|&amp;nbsp; Tennengebirge, Austria&lt;/div&gt;
+
+&lt;h4&gt;How Cave Ice Forms&lt;/h4&gt;
+&lt;p&gt;The Eisriesenwelt contains over 30,000 m³ of permanent ice — the largest volume of any ice cave on Earth. Unlike glacial ice, which forms from compacted snow, cave ice forms when cold air sinks into the cave in winter (cold air is denser) and freezes meltwater percolating downward from the mountain above. The ice grows from the base upward in a process called &lt;em&gt;dynamic icing&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In summer, airflow reverses, but warm air cannot penetrate as easily due to the cave&#39;s geometry — the upper entrance acts as a cold-air trap, and the surrounding rock retains winter cold. This asymmetry between easy winter freezing and difficult summer thawing is what allows permanent ice to persist here.&lt;/p&gt;
+
+&lt;h4&gt;The Ice as Ecosystem Structure&lt;/h4&gt;
+&lt;p&gt;The ice formations are not merely geological features — they are structural components of the cave ecosystem. Ice regulates airflow through the cave system, modulates interior humidity, stabilises temperature across depth gradients, and influences the distribution of meltwater. The biological communities at every depth are partly a function of the ice&#39;s presence: the specific cold, dark, hydrochemically filtered conditions they inhabit are all shaped by the ice formations above.&lt;/p&gt;
+
+&lt;h4&gt;Ice Loss and Climate&lt;/h4&gt;
+&lt;p&gt;Long-term monitoring of the Eisriesenwelt documents net ice loss consistent with regional warming in the Eastern Alps. As surface temperatures rise, winter cold periods shorten and summer melt periods lengthen — reducing the net ice budget. Increased meltwater influx carries dissolved organic carbon from alpine soils into the cave system, enriching zones that have been carbon-scarce for millennia and altering the competitive conditions that selected for slow, specialised organisms like those in the permanent dark.&lt;/p&gt;
+
+&lt;cite&gt;Obleitner F, Spötl C (2011). The mass and energy balance of ice within the Eisriesenwelt cave, Austrian Alps. &lt;em&gt;The Cryosphere&lt;/em&gt; 5:245–257.&lt;/cite&gt;</tw-passagedata><tw-passagedata pid="24" name="FieldNote-AG31T" tags="fieldnote" position="450,475" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Strain AG&amp;#8209;31T &amp;nbsp;|&amp;nbsp; Margesin et al., 2004&lt;/div&gt;
 
 &lt;h4&gt;Isolation &amp;amp; Discovery&lt;/h4&gt;
-&lt;p&gt;AG-31T was isolated from surface-sterilised bulk soil in the Eisriesenwelt cave system by Rosa Margesin and colleagues at the University of Innsbruck. Recovered on R2A agar at 4°C and identified via 16S rRNA gene sequencing as a novel species within &lt;em&gt;Caulobacteraceae&lt;/em&gt;, representing a previously undescribed lineage from this habitat.&lt;/p&gt;
+&lt;p&gt;AG-31T was isolated from surface-sterilised bulk soil in the Eisriesenwelt cave system by Rosa Margesin and colleagues at the University of Innsbruck. Recovered on R2A agar at 4°C and identified via 16S rRNA gene sequencing as a novel species within &lt;em&gt;Caulobacteraceae&lt;/em&gt;.&lt;/p&gt;
 
-&lt;h4&gt;Psychrophily&lt;/h4&gt;
-&lt;p&gt;AG-31T is classified as a &lt;strong&gt;psychrophile&lt;/strong&gt; — an organism optimally active at low temperatures (10–15°C), yet capable of sustained metabolic function near 0°C. Most mesophilic organisms fail here due to membrane rigidification and protein misfolding. AG-31T has evolved specific countermeasures for both problems.&lt;/p&gt;
+&lt;h4&gt;Classification&lt;/h4&gt;
+&lt;p&gt;AG-31T is a strictly &lt;strong&gt;aerobic chemoorganotroph&lt;/strong&gt; — it requires molecular oxygen as its terminal electron acceptor and derives energy from the oxidation of organic carbon compounds. It is classified as a &lt;strong&gt;psychrophile&lt;/strong&gt;, with optimal growth at 10–15°C and confirmed metabolic activity near 0°C. Its capacity for &lt;strong&gt;phenol degradation&lt;/strong&gt; at low temperatures (1–25°C) is among its most ecologically significant characteristics.&lt;/p&gt;
 
 &lt;h4&gt;Cold-Active Enzymes&lt;/h4&gt;
 &lt;p&gt;Psychrophilic enzymes maintain conformational flexibility at near-zero temperatures through altered structural features: fewer stabilising salt bridges, reduced proline residues in flexible loops, and modified hydrophobic core geometry. The result is catalytic efficiency near 0°C but thermal instability above ~35–40°C — a classic evolutionary trade-off between cold activity and thermostability.&lt;/p&gt;
 
 &lt;h4&gt;Membrane Adaptation&lt;/h4&gt;
-&lt;p&gt;At near-zero temperatures, cell membranes enter a gel phase that disrupts transport and function. AG-31T compensates by incorporating elevated proportions of unsaturated and polyunsaturated fatty acids — lipids with lower melting points that maintain membrane fluidity in the cold. This is a defining biochemical signature of psychrophilic bacteria.&lt;/p&gt;
-
-&lt;h4&gt;Energy &amp;amp; Carbon&lt;/h4&gt;
-&lt;p&gt;In the Eisriesenwelt deep cave, organic carbon is extremely scarce. AG-31T grows on minimal substrates and likely depends on trace organics from meltwater percolation combined with chemolithotrophic electron donors from the mineral substrate. Its extremely slow growth rate reflects the reality of near-zero energy availability.&lt;/p&gt;
+&lt;p&gt;At near-zero temperatures, cell membranes enter a gel phase that disrupts transport and function. AG-31T compensates by incorporating elevated proportions of unsaturated and polyunsaturated fatty acids — lipids with lower melting points that maintain membrane fluidity in the cold.&lt;/p&gt;
 
 &lt;h4&gt;Climate Vulnerability&lt;/h4&gt;
 &lt;p&gt;Increased alpine warming drives more meltwater into deep cave systems, introducing dissolved organic carbon that favours faster-growing, generalist surface-derived competitors. The cold, dark, carbon-scarce stable regime that selected for AG-31T&#39;s adaptations is precisely what climate change threatens. Extreme specialisation to stable conditions is an advantage exactly until those conditions change.&lt;/p&gt;
 
-&lt;cite&gt;Margesin R, Spröer C, Schumann P, Schinner F (2004). Psychrophilic microorganisms isolated from alpine glacier cryoconite. &lt;em&gt;Int J Syst Evol Microbiol&lt;/em&gt; 53(5):1291–1296.&lt;/cite&gt;</tw-passagedata><tw-passagedata pid="19" name="FieldNote-Climate" tags="fieldnote" position="550,300" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Eisriesenwelt &amp;nbsp;|&amp;nbsp; Tennengebirge, Austria&lt;/div&gt;
+&lt;cite&gt;Margesin R, Spröer C, Schumann P, Schinner F (2004). &lt;em&gt;Int J Syst Evol Microbiol&lt;/em&gt; 53(5):1291–1296.&lt;/cite&gt;</tw-passagedata><tw-passagedata pid="25" name="FieldNote-Climate" tags="fieldnote" position="575,475" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Eisriesenwelt &amp;nbsp;|&amp;nbsp; Tennengebirge, Austria&lt;/div&gt;
 
 &lt;h4&gt;Ice Loss in the Eisriesenwelt&lt;/h4&gt;
-&lt;p&gt;The Eisriesenwelt contains over 30,000 m³ of permanent ice, making it the largest ice cave on Earth. The ice is dynamic: it grows in winter as cold air sinks into the cave and freezes incoming meltwater, and it retreats in summer. Long-term monitoring has documented net ice loss over the past several decades, consistent with regional warming trends in the Eastern Alps.&lt;/p&gt;
-&lt;p&gt;The ice inside the cave is not simply frozen groundwater — it is a structural component of the cave ecosystem. Ice formations regulate airflow, humidity, and temperature throughout the system. Their retreat alters the microclimate at every depth.&lt;/p&gt;
+&lt;p&gt;Long-term monitoring has documented net ice loss over the past several decades, consistent with regional warming in the Eastern Alps. The ice formations regulate airflow, humidity, and temperature throughout the system — their retreat alters the microclimate at every depth.&lt;/p&gt;
 
 &lt;h4&gt;Temperature Trends&lt;/h4&gt;
-&lt;p&gt;Mean annual air temperature in the Austrian Alps has risen by approximately 2°C since the late nineteenth century, with the rate of increase accelerating after 1980. Cave interior temperatures in systems like the Eisriesenwelt are coupled to surface climate through seasonal airflow and meltwater hydrology. A warming surface eventually means a warming cave interior — though the deep zones respond on timescales of decades to centuries rather than years.&lt;/p&gt;
+&lt;p&gt;Mean annual air temperature in the Austrian Alps has risen by approximately 2°C since the late nineteenth century, with the rate of increase accelerating after 1980. Cave interior temperatures are coupled to surface climate through seasonal airflow and meltwater hydrology — deep zones respond on timescales of decades to centuries.&lt;/p&gt;
 
 &lt;h4&gt;Meltwater and Carbon Influx&lt;/h4&gt;
-&lt;p&gt;As surface temperatures rise, the volume of meltwater percolating into the cave increases. This meltwater carries dissolved organic carbon leached from alpine soils — carbon compounds that are metabolically rich relative to the near-zero concentrations present under stable conditions. For organisms adapted to carbon scarcity, this influx does not represent more food. It represents a change in the competitive landscape.&lt;/p&gt;
-&lt;p&gt;Fast-growing heterotrophic bacteria from the surface can exploit elevated dissolved organic carbon far more efficiently than slow-growing psychrophilic specialists like AG-31T. The arrival of richer substrate favours organisms with higher metabolic rates — precisely the organisms that the deep cave&#39;s historical scarcity kept out.&lt;/p&gt;
+&lt;p&gt;As surface temperatures rise, more meltwater percolates into the cave, carrying dissolved organic carbon from alpine soils. For organisms adapted to carbon scarcity, this influx does not represent more food — it represents a change in the competitive landscape. Fast-growing heterotrophic surface bacteria can exploit elevated dissolved organic carbon far more efficiently than slow-growing psychrophilic specialists like AG-31T.&lt;/p&gt;
 
 &lt;h4&gt;Competitive Displacement&lt;/h4&gt;
-&lt;p&gt;AG-31T does not face direct thermal stress from the observed warming — temperatures in the deep cave are buffered enough that 2°C of surface warming will not immediately raise conditions beyond its tolerance range. The threat is indirect: destabilisation of the competitive exclusion that its specialisation depended on.&lt;/p&gt;
-&lt;p&gt;In ecological terms, AG-31T&#39;s niche is defined not just by what it can tolerate, but by what others cannot. Remove the conditions that exclude its competitors, and the niche shrinks.&lt;/p&gt;
+&lt;p&gt;AG-31T does not face direct thermal stress from observed warming — deep-cave temperatures are sufficiently buffered. The threat is indirect: destabilisation of the competitive exclusion that its specialisation depends on. AG-31T&#39;s niche is defined not just by what it can tolerate, but by what others cannot. Remove the conditions that exclude its competitors, and the niche shrinks.&lt;/p&gt;
 
 &lt;h4&gt;Research Gaps&lt;/h4&gt;
-&lt;p&gt;Long-term microbiological monitoring of the Eisriesenwelt&#39;s microbial communities is limited. Most studies, including the original characterisation of AG-31T, represent single-timepoint snapshots rather than longitudinal tracking. Whether the microbial community composition at depth has already shifted in response to observed warming is not currently known. This is an active area of scientific concern in cave microbiology.&lt;/p&gt;
+&lt;p&gt;Long-term microbiological monitoring of the Eisriesenwelt is limited. Most studies represent single-timepoint snapshots. Whether the microbial community composition at depth has already shifted in response to observed warming is not currently known — an active area of scientific concern in cave microbiology.&lt;/p&gt;
 
 &lt;cite&gt;Obleitner F, Spötl C (2011). The mass and energy balance of ice within the Eisriesenwelt cave, Austrian Alps. &lt;em&gt;The Cryosphere&lt;/em&gt; 5:245–257.&lt;br&gt;Temovski M et al. (2018). Cave ice in the Alpine region. &lt;em&gt;Quaternary International&lt;/em&gt;.&lt;/cite&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
@@ -1122,4 +1093,3 @@ The deep cave was yours because it was impossible for others. That is starting t
 	</script>
 </body>
 </html>
-

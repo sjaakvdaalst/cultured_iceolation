@@ -142,13 +142,12 @@ body {
 
 #ui-bar, #ui-bar-history, #ui-bar-session { display:none !important; }
 
-#story { position:relative; z-index:10; display:flex; justify-content:center; margin-left:0 !important; }
+#story { position:relative; z-index:10; display:flex; justify-content:center; }
 
 .passage {
   max-width:720px; width:min(720px, calc(100vw - 2.8rem));
   margin: 88px auto 64px;
   padding: 2.2rem 2.4rem;
-  overflow:hidden;
   background: var(--pb);
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 4px;
@@ -157,16 +156,6 @@ body {
   animation: pFade 0.65s ease both;
   position: relative;
 }
-/* When passage starts with an image, strip top padding so image sits flush under HUD */
-.passage > img:first-child,
-.passage > p:first-child > img:only-child {
-  display:block;
-  margin: -2.2rem -2.4rem 1.8rem -2.4rem;
-  width: calc(100% + 4.8rem);
-  max-width: none;
-  border-radius: 3px 3px 0 0;
-}
-
 .passage::before {
   content:''; position:absolute; top:0; left:2.4rem; right:2.4rem; height:1px;
   background: linear-gradient(90deg, transparent, var(--za), transparent);
@@ -569,7 +558,8 @@ a[data-passage]:hover {
 
 }());</tw-passagedata><tw-passagedata pid="5" name="Start" tags="" position="400,25" size="100,100">&lt;&lt;resetVars&gt;&gt;
 &lt;&lt;include &quot;HUD&quot;&gt;&gt;
-&lt;img src=&quot;img/cave.jpg&quot; alt=&quot;Eisriesenwelt cave entrance&quot; style=&quot;width:100%; max-width:700px; display:block; margin:1rem auto;&quot;&gt;
+
+&lt;img src=&quot;img/cave.jpg&quot; alt=&quot;Eisriesenwelt cave entrance&quot; style=&quot;width:100%; max-width:500px; display:block; margin:1rem auto;&quot;&gt;
 
 &lt;span class=&quot;ptag&quot;&gt;Eisriesenwelt — Tennengebirge, Austria&lt;/span&gt;
 &lt;span class=&quot;zlabel&quot;&gt;Cultured Iceolation&lt;/span&gt;
@@ -852,7 +842,7 @@ Your culture plates reveal &#39;&#39;strain AG-31T&#39;&#39;, also called &#39;&
 &lt;p&gt;But you are using almost nothing to remain this way.&lt;/p&gt;
 &lt;p&gt;This is the edge.&lt;/p&gt;
 &lt;p&gt;Extracting the minimum from the minimum.&lt;/p&gt;
-&lt;p&gt;Your microbial companions have a name: &#39;&#39;paeniglutamicibacter psychrophenolicus&#39;&#39;, also called &#39;&#39;strain AG-31T&#39;&#39;.&lt;/p&gt;
+&lt;p&gt;Your microbial companions have a name: &#39;&#39;aeniglutamicibacter psychrophenolicus&#39;&#39;, also called &#39;&#39;strain AG-31T&#39;&#39;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -984,7 +974,7 @@ Only the specialist survives the full descent. And the specialist is precisely t
 The data is collected. The plates have grown. The sequencing is complete.
 &lt;/div&gt;
 
-Paeniglutamicibacter psychrophenolicus, strain AG-31T. A strictly aerobic, psychrophilic chemoorganotroph with optimal growth between 10°C and 15°C, capable of sustained metabolic activity near 0°C. Phenol degradation confirmed across a temperature range of 1–25°C, a rare trait. Isolated from the Eisriesenwelt cave system.
+Aeniglutamicibacter psychrophenolicus, strain AG-31T. A strictly aerobic, psychrophilic chemoorganotroph with optimal growth between 10°C and 15°C, capable of sustained metabolic activity near 0°C. Phenol degradation confirmed across a temperature range of 1–25°C, a rare trait. Isolated from the Eisriesenwelt cave system.
 
 Its existence documents something easy to overlook: adaptation is not merely tolerance. AG-31T does not &lt;em&gt;survive&lt;/em&gt; at 1°C. It &lt;em&gt;functions&lt;/em&gt; at 1°C; it degrades phenol, reproduces, maintains membrane fluidity through unsaturated lipid composition, sustains catalytic rates through the structural flexibility of cold-active enzymes. These are not compromises. They are precise solutions to precise problems, accumulated across timescales that dwarf the history of scientific observation.
 
@@ -1079,7 +1069,7 @@ You will continue.
 &lt;p&gt;TBD&lt;/p&gt;
 
 &lt;h4&gt;Characteristics Overview&lt;/h4&gt;
-&lt;img src=&quot;img/ag31t.png&quot; alt=&quot;Characteristics of AG31T&quot; style=&quot;width:100%; max-width:500px; display:block; margin:1rem auto;&quot;&gt;
+&lt;p&gt;Insert picture here.&lt;/p&gt;
 
 &lt;cite&gt;Margesin R, Spröer C, Schumann P, Schinner F (2004). &lt;em&gt;Int J Syst Evol Microbiol&lt;/em&gt; 53(5):1291–1296.&lt;/cite&gt;</tw-passagedata><tw-passagedata pid="25" name="FieldNote-Climate" tags="fieldnote" position="725,450" size="100,100">&lt;div class=&quot;fn-sub&quot;&gt;Eisriesenwelt &amp;nbsp;|&amp;nbsp; Tennengebirge, Austria&lt;/div&gt;
 

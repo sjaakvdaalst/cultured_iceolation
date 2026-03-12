@@ -386,6 +386,7 @@ a[data-passage]:hover {
   .passage { padding:1.6rem 1.4rem; margin-top:110px; margin-left:1rem !important; margin-right:1rem !important; width:auto; }
   .mg { grid-template-columns:1fr; }
   #hud-inner { padding:6px 1.2rem; gap:10px; font-size:10px; width:calc(100% - 2.4rem); }
+  .passage img { max-width:100%; }
 }
 
 
@@ -775,6 +776,8 @@ Only the specialist survives the full descent. And the specialist is precisely t
 &lt;span class=&quot;ptag&quot;&gt;Zone 0 — The Entrance &lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;&lt;span class=&quot;rbadge rb-sci&quot;&gt;Scientist&lt;/span&gt;&lt;&lt;else&gt;&gt;&lt;span class=&quot;rbadge rb-mic&quot;&gt;Microbe&lt;/span&gt;&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 
 &lt;&lt;if $role is &quot;scientist&quot;&gt;&gt;
+&lt;img src=&quot;img/scientist.png&quot; alt=&quot;Scientist at the Eisriesenwelt cave entrance&quot; style=&quot;width:100%; max-width:340px; display:block; margin:1rem auto;&quot;&gt;
+&lt;p style=&quot;text-align:center; font-size:0.75em; color:var(--mu); margin-top:0.4rem; margin-bottom:1rem;&quot;&gt;&lt;em&gt;AI-generated image&lt;/em&gt;&lt;/p&gt;
 It is early in the morning. The Wiener Melange you had earlier has proven to be a vital resource for your sanity on your 2.5 hour journey to the cave. After the ascent, you now finally stand at the mouth of the Eisriesenwelt — literally &#39;&#39;the World of the Ice Giants&#39;&#39; — in the Tennengebirge massif, forty kilometers southwest of Salzburg. Cold, mineral-scented air rushes outward from the cave opening, scattering ice crystals that briefly catch the dawn&#39;s first rays. Behind you: pine forest, birdsong. Ahead: a limestone corridor that extends forty kilometers into the mountain.
 
 Unlike tourists, you are not here for the ice formations, though they are extraordinary. You are for something smaller. Much smaller. Something most visitors would not think to look for.
@@ -790,6 +793,8 @@ You have come here with three specific research questions in mind:
 You check your field kit: sample vials, a calibrated temperature probe, a notebook dense with relevant literature. &#39;&#39;You are looking for life in places life is not supposed to be.&#39;&#39;
 
 &lt;&lt;else&gt;&gt;
+&lt;img src=&quot;img/microbe.png&quot; alt=&quot;Microscopic view of AG31T psychrophile&quot; style=&quot;width:100%; max-width:340px; display:block; margin:1rem auto;&quot;&gt;
+&lt;p style=&quot;text-align:center; font-size:0.75em; color:var(--mu); margin-top:0.4rem; margin-bottom:1rem;&quot;&gt;&lt;em&gt;AI-generated image&lt;/em&gt;&lt;/p&gt;
 &lt;div class=&quot;mv&quot;&gt;
 Light. Warmth. The molecular complexity of a surface world in full operation: a swirl of oxygen, plants on the side of the mountain, organic carbon arriving in dust and water, the breath of passing creatures. All of it moving through this space, none of it aware of you.
 

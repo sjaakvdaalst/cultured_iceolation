@@ -373,18 +373,18 @@ a[data-passage]:hover {
 }
 
 /* Field note links — visually distinct from navigation links */
-.fieldnote-link a.link-internal {
+.passage a.link-internal {
   color:#8ecae6;
   border-bottom:1px dashed rgba(142,202,230,0.45);
   padding-bottom:1px;
   transition:color 0.2s, border-color 0.2s, text-shadow 0.2s;
 }
-.fieldnote-link a::before {
-  content: 'ⓘ\00a0';
-  font-size: 0.85em;
-  opacity: 0.7;
+.passage a.link-internal::before {
+  content:'ⓘ\00a0';
+  font-size:0.85em;
+  opacity:0.7;
 }
-.fieldnote-link a.link-internal:hover {
+.passage a.link-internal:hover {
   color:#cde7f5;
   border-color:#8ecae6;
   text-shadow:0 0 10px rgba(142,202,230,0.4);
@@ -406,19 +406,6 @@ a[data-passage]:hover {
   #hud-inner { padding:6px 1.2rem; gap:10px; font-size:10px; width:calc(100% - 2.4rem); }
   .passage img { max-width:100%; }
   .cite-list li { word-break:break-word; overflow-wrap:break-word; }
-}
-
-.cite-list {
-  list-style: decimal;
-  margin-left: 1.6em;
-  padding-left: 0;
-}
-
-.cite-list li {
-  display: list-item;
-  margin-bottom: 0.55em;
-  text-indent: -0.4em;
-  padding-left: 0.4em;
 }
 
 
@@ -446,16 +433,16 @@ You were always here.
 You will continue.
 
 &#39;&#39;Sources Used:&#39;&#39;
-<ol class="cite-list">
-<li>Casanueva A, Tuffin M, Cary C, Cowan DA. 2010. Molecular adaptations to psychrophily: the impact of 'omic' technologies. <em>Trends in Microbiology.</em> 18(8):374–381. doi:10.1016/j.tim.2010.05.002</li>
-<li>Feller G, Gerday C. 2003. Psychrophilic enzymes: hot topics in cold adaptation. <em>Nature Reviews Microbiology.</em> 1(3):200–208. doi:10.1038/nrmicro773</li>
-<li>How climate change affects the ice cave. | Eisriesenwelt. (2026). Eisriesenwelt.at. https://www.eisriesenwelt.at/en/blog/detail/how-climate-change-affects-the-ice-cave</li>
-<li>Margesin R, Schumann P, Spröer C, Gounot A-M. 2004. <em>Arthrobacter psychrophenolicus</em> sp. nov., isolated from an alpine ice cave. <em>International Journal of Systematic and Evolutionary Microbiology.</em> 54(6):2067–2072. doi:10.1099/ijs.0.63124-0</li>
-<li>Obleitner F, Spötl C. 2011. The mass and energy balance of ice within the Eisriesenwelt cave, Austrian Alps. <em>The Cryosphere.</em> 5:245–257.</li>
-<li>Schöner W, Weyss G, Mursch-Radlgruber E. 2011. Linkage of cave-ice changes to weather patterns inside and outside the cave Eisriesenwelt (Tennengebirge, Austria). <em>The Cryosphere.</em> 5(3):603–616. doi:10.5194/tc-5-603-2011</li>
-<li>Spötl C, Fohlmeister J, Reimer P, Zhang H. 2024. First insights into the age of the giant ice deposits in the Eisriesenwelt cave (Austria). <em>Scientific Reports.</em> 14(1). doi:10.1038/s41598-024-61668-1</li>
-<li>U.S. National Library of Medicine. (n.d.). Taxonomy browser (<em>Paeniglutamicibacter psychrophenolicus</em>). National Center for Biotechnology Information. https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=257454</li>
-</ol>
+&lt;ol class=&quot;cite-list&quot;&gt;
+&lt;li&gt;Casanueva A, Tuffin M, Cary C, Cowan DA. 2010. Molecular adaptations to psychrophily: the impact of 'omic' technologies. &lt;em&gt;Trends in Microbiology.&lt;/em&gt; 18(8):374–381. doi:10.1016/j.tim.2010.05.002&lt;/li&gt;
+&lt;li&gt;Feller G, Gerday C. 2003. Psychrophilic enzymes: hot topics in cold adaptation. &lt;em&gt;Nature Reviews Microbiology.&lt;/em&gt; 1(3):200–208. doi:10.1038/nrmicro773&lt;/li&gt;
+&lt;li&gt;How climate change affects the ice cave. | Eisriesenwelt. (2026). Eisriesenwelt.at. https://www.eisriesenwelt.at/en/blog/detail/how-climate-change-affects-the-ice-cave&lt;/li&gt;
+&lt;li&gt;Margesin R, Schumann P, Spröer C, Gounot A-M. 2004. &lt;em&gt;Arthrobacter psychrophenolicus&lt;/em&gt; sp. nov., isolated from an alpine ice cave. &lt;em&gt;International Journal of Systematic and Evolutionary Microbiology.&lt;/em&gt; 54(6):2067–2072. doi:10.1099/ijs.0.63124-0&lt;/li&gt;
+&lt;li&gt;Obleitner F, Spötl C. 2011. The mass and energy balance of ice within the Eisriesenwelt cave, Austrian Alps. &lt;em&gt;The Cryosphere.&lt;/em&gt; 5:245–257.&lt;/li&gt;
+&lt;li&gt;Schöner W, Weyss G, Mursch-Radlgruber E. 2011. Linkage of cave-ice changes to weather patterns inside and outside the cave Eisriesenwelt (Tennengebirge, Austria). &lt;em&gt;The Cryosphere.&lt;/em&gt; 5(3):603–616. doi:10.5194/tc-5-603-2011&lt;/li&gt;
+&lt;li&gt;Spötl C, Fohlmeister J, Reimer P, Zhang H. 2024. First insights into the age of the giant ice deposits in the Eisriesenwelt cave (Austria). &lt;em&gt;Scientific Reports.&lt;/em&gt; 14(1). doi:10.1038/s41598-024-61668-1&lt;/li&gt;
+&lt;li&gt;U.S. National Library of Medicine. (n.d.). Taxonomy browser (&lt;em&gt;Paeniglutamicibacter psychrophenolicus&lt;/em&gt;). National Center for Biotechnology Information. https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=257454&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;div class=&quot;mv&quot; style=&quot;text-align:center; margin-top:2rem;&quot;&gt;Thanks for playing! Auf Wiedersehen!&lt;/div&gt;
 
